@@ -3,7 +3,8 @@
 Sanya is a Discord bot with a character: a small, black, foul-mouthed piglet who lives at an inn,
 listens to everything said in the server, remembers the people in it, and answers when she is
 spoken to. She runs on your own model server and your own memory service, on your own PC, and
-nothing she hears leaves it except the searches she makes.
+nothing she hears leaves it except the searches she makes and the pages and images she is asked
+to fetch.
 
 What she does:
 

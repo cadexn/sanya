@@ -51,10 +51,9 @@ She talks to an OpenAI-compatible chat completions endpoint and nothing else. Wh
 | `image_url` parts in a user message | Vision, for pictures sent to her and for describing pictures posted around her. Without it those two things fail and she says so. |
 | `usage` in the answer | Token counts, for the monitor. Optional. |
 
-She was built and run against a local server answering one request at a time, with a model of
-about 4B parameters that thinks, calls tools and sees pictures. A reply takes two model calls at
-least (the check and the reply), more when she uses tools, so a slow server shows in her reply
-times. The limits for one call are in the config (`model.timeout_seconds`, `model.max_reply_tokens`).
+She was built and run against a local server answering one request at a time, with a model that
+thinks, calls tools and sees pictures. A reply takes two model calls at least (the check and the
+reply), more when she uses tools, so a slow server shows in her reply times. The limits for one call are in the config (`model.timeout_seconds`, `model.max_reply_tokens`).
 
 Check it: `GET http://127.0.0.1:8080/v1/models` lists the model ids the server offers. The id
 goes in `model.name`; the address in `model.base_url`.
@@ -71,9 +70,10 @@ embeddings and reranker locally), and start it; by default she expects it at
 
 Hindsight keeps memories in banks. She uses one bank per server, named in the config under
 `memory.banks`. **She does not create or configure the bank herself**: she only reads and writes
-one that exists. The wizard makes it (`PUT /v1/default/banks/<name>` with the first five
-settings, then `PATCH /v1/default/banks/<name>/config` with the rest). By hand, use the same two
-calls, or Hindsight's control panel, with these settings:
+one that exists. The wizard makes it (`PUT /v1/default/banks/<name>` with the extraction mode,
+the mission, the chunk size and the three `enable_` settings, then
+`PATCH /v1/default/banks/<name>/config` with the rest). By hand, use the same two calls, or
+Hindsight's control panel, with these settings:
 
 | Setting | Value | Why |
 |---|---|---|
