@@ -1,6 +1,7 @@
 """Start the bot:  python -m sanya
 
     python -m sanya --check    validate the config and storage, then exit
+    python -m sanya setup      the first-run setup: token, servers, model, memory, keys
 """
 from __future__ import annotations
 
@@ -23,6 +24,10 @@ def _under_root(folder: str) -> Path:
 
 
 def main(argv: list[str] | None = None) -> int:
+    argv = sys.argv[1:] if argv is None else argv
+    if argv[:1] == ["setup"]:
+        from .setup import main as setup_main
+        return setup_main(argv[1:])
     parser = argparse.ArgumentParser(prog="sanya", description="Sanya, a standalone Discord bot")
     parser.add_argument("--config", default=str(ROOT / "config" / "sanya.yaml"))
     parser.add_argument("--quiet", action="store_true", help="write events to the log file only")

@@ -4,6 +4,19 @@ Everything needed to run Sanya, in order. Each step says how to check it before 
 whole thing is a Discord application, a model server, a memory service, this folder, and a file
 of keys.
 
+**The quick way.** Do steps 1 to 4 (the application, the model server, the memory service, this
+folder's Python environment), then run the wizard:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup.ps1
+```
+
+It asks for the token and checks it against Discord, lists the servers she is in and lets you
+pick, asks for your account id, finds the models your server offers and tries one small request
+with tools, reaches the memory service and creates her bank with the settings below, asks for the
+optional keys, and only then writes `.env` and `config\sanya.yaml`. Steps 5 and 6 say what it
+did; nothing stops you doing them by hand instead.
+
 ## 1. The Discord application
 
 1. Open the [Discord developer portal](https://discord.com/developers/applications) and create an
@@ -58,13 +71,14 @@ embeddings and reranker locally), and start it; by default she expects it at
 
 Hindsight keeps memories in banks. She uses one bank per server, named in the config under
 `memory.banks`. **She does not create or configure the bank herself**: she only reads and writes
-one that exists. Make it, through Hindsight's API (`/v1/default/banks/<name>/...`) or its control
-panel, and give it these settings:
+one that exists. The wizard makes it (`PUT /v1/default/banks/<name>` with the first five
+settings, then `PATCH /v1/default/banks/<name>/config` with the rest). By hand, use the same two
+calls, or Hindsight's control panel, with these settings:
 
 | Setting | Value | Why |
 |---|---|---|
 | `retain_extraction_mode` | `concise` | Short facts, one per thing said. |
-| `retain_mission` | The extraction instruction under **Ambient memory** in [SETTINGS.md](SETTINGS.md) | It tells the extractor what a fact is, what is hearsay, and to skip banter. Copy it word for word. |
+| `retain_mission` | The text of `persona\MEMORY_MISSION.md` | It tells the extractor what a fact is, what is hearsay, and to skip banter. Word for word. |
 | `retain_chunk_size` | `3000` | A batch of chat is about that long. |
 | `retain_chunk_batch_size` | `1` | One batch at a time. |
 | `enable_graph_retrieval` | `true` | |
@@ -76,7 +90,7 @@ panel, and give it these settings:
 | `store_document_text` | `false` | The chat itself is not kept in the memory service, only the facts drawn from it. |
 | `recall_include_chunks` | `false` | |
 | `audit_log_enabled` | `false` | Otherwise the service keeps the text of every recall query. |
-| `memory_defense` | on, with `sensitive_data` set to `redact` | A password said in chat does not become a fact. |
+| `memory_defense` | on, with `sensitive_data` set to `redact` | A password said in chat does not become a fact. The wizard does not set this one; do it in Hindsight's own settings. |
 
 What she calls on the bank: `POST memories/recall`, `POST memories` (a batch of chat as a
 document), `GET memories` and `GET memories/<id>`, `PATCH memories/<id>` with `state: invalidated`

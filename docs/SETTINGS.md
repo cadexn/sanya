@@ -62,9 +62,10 @@ The sections follow the boxes in [FLOW.md](FLOW.md).
 | Opting out | Not offered. A member can have facts about them forgotten, but new things they or others say are stored again. **Risk accepted.** Decided 4 October 2026. |
 | Facts from restricted channels | Recalled anywhere in the server. **Risk accepted:** something said in a channel not everyone can see can surface in a public one through her. Decided 4 October 2026. |
 
-The extraction instruction is stored on the Hindsight bank as `retain_mission`. It was tested on
-invented chat on 4 October 2026, and amended later that day so that what Sanya says about herself is
-kept (tested again, without storing anything, before it was applied). Its sentences about Sanya's
+The extraction instruction is stored on the Hindsight bank as `retain_mission`; the copy the setup
+wizard applies is `persona\MEMORY_MISSION.md`. It was tested on invented chat on 4 October 2026,
+and amended later that day so that what Sanya says about herself is kept (tested again, without
+storing anything, before it was applied). Its sentences about Sanya's
 own lines and about requests addressed to her are not relied on any more: the service did not obey
 them, and both rules are now enforced in code, as described in the table above.
 

@@ -5,6 +5,9 @@
 data/
 logs/
 .monitor-demo/
+
+# The documentation site, built from docs/ with mkdocs
+site/
 *.db
 *.db-shm
 *.db-wal

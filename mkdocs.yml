@@ -1,0 +1,49 @@
+site_name: Sanya
+site_description: A rude, remembering piglet of a Discord bot, run on your own model.
+docs_dir: docs
+site_dir: site
+exclude_docs: |
+  make_flow_svg.py
+  requirements.txt
+  __pycache__/
+
+nav:
+  - Home: index.md
+  - Setup: SETUP.md
+  - Configuration: CONFIGURATION.md
+  - Her character: PERSONA.md
+  - The specification: SETTINGS.md
+  - Message flow: FLOW.md
+  - Sanya Monitor: MONITOR.md
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: pink
+      accent: pink
+      toggle:
+        icon: material/weather-sunny
+        name: Light
+    - scheme: default
+      primary: pink
+      accent: pink
+      toggle:
+        icon: material/weather-night
+        name: Dark
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - toc.follow
+
+markdown_extensions:
+  - tables
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format

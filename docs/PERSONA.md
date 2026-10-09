@@ -15,6 +15,7 @@ None of it is written in code. Edit the files; she reads them when she starts.
 | `status.yaml` | The line under her name in the member list, by time of day | Nobody; the bot sets it |
 | `SECURITY_CHECK.md` | The instruction for the security check that screens each message addressed to her | Only the check, never her |
 | `IMAGE_DESCRIPTION.md` | The instruction for describing a picture posted around her | Only the describer, never her |
+| `MEMORY_MISSION.md` | The instruction the memory service follows when it turns chat into facts; the setup wizard puts it on her bank | Only the memory service, never her |
 
 The four prose files are joined in that order, with a blank line between, and sent as her system
 prompt. Nothing is substituted into them: what you write is what she reads. `RULES.md` comes last
