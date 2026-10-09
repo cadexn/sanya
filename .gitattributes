@@ -1,0 +1,5 @@
+# Text files are stored with LF and checked out in the platform's own line endings.
+* text=auto
+# Windows batch files need CRLF to run.
+*.cmd text eol=crlf
+*.png binary

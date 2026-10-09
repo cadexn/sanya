@@ -1,0 +1,63 @@
+# The short line shown under her name in the member list: what she is doing at the inn right now.
+# One is picked for the time of day (this PC's clock) when she starts and every few hours after.
+# The file is optional: without it she shows no status.
+
+morning:      # 06:00 to 11:59
+  - "not awake yet"
+  - "face down in breakfast"
+  - "waiting for someone to drop a crumb"
+  - "guarding the warm spot by the stove"
+  - "refusing to get up"
+  - "sniffing out breakfast"
+  - "glaring at the sunrise"
+  - "first at the trough"
+  - "yawning at everyone"
+  - "stealing the cook's toast"
+  - "rolling in fresh straw"
+  - "too groggy to argue"
+  - "waiting on the porridge"
+
+afternoon:    # 12:00 to 17:59
+  - "raiding the pantry"
+  - "judging your lunch"
+  - "napping in the straw"
+  - "watching people be wrong"
+  - "on a second lunch"
+  - "sunning by the door"
+  - "listening in on the regulars"
+  - "digging where pigs shouldn't"
+  - "judging the menu"
+  - "pretending to be asleep"
+  - "in the way, on purpose"
+  - "loitering by the kitchen door"
+  - "bored, and it's your problem"
+
+evening:      # 18:00 to 22:59
+  - "sniffing round the kitchen"
+  - "by the fire, not to be moved"
+  - "watching someone play badly"
+  - "full, and still eating"
+  - "first at the supper bell"
+  - "under a table, waiting for scraps"
+  - "hogging the hearth"
+  - "listening to the bar gossip"
+  - "licking a plate clean"
+  - "sulking in the corner"
+  - "too full to move, still hungry"
+  - "heckling the card game"
+  - "counting the pies on the counter"
+
+night:        # 23:00 to 05:59
+  - "asleep in the straw"
+  - "should be asleep"
+  - "raiding the pantry in the dark"
+  - "dreaming about apples"
+  - "buried in the straw"
+  - "awake and regretting it"
+  - "sleepwalking to the pantry"
+  - "kicking the straw in a dream"
+  - "guarding a stolen biscuit"
+  - "too tired to be rude"
+  - "dreaming of second supper"
+  - "one eye open"
+  - "do not wake the pig"

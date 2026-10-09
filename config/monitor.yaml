@@ -1,0 +1,16 @@
+# Sanya Monitor's own settings. The monitor reads the bot's settings from sanya.yaml
+# and changes nothing there. Start it with "Sanya Monitor.cmd" in the project folder.
+
+port: 7269            # the page is at http://127.0.0.1:7269 and answers this PC only
+history_days: 7       # how far back the Live view and the charts reach (the room log keeps 7 days)
+open_browser: true    # open the page in the browser when the monitor starts
+show_switched_off: false   # list only the servers she is switched on in
+
+# Names to show for server ids. She records a server's name herself from her next start on;
+# a name here is used instead. Keep the quotes, or YAML reads the ids as numbers.
+servers: {}
+
+# Names to show for channel ids. She records channel names herself from her next start on, and
+# before that the monitor finds a name once a batch of the channel's chat has gone to memory.
+# A channel listed here is shown under this name whatever she has recorded.
+channels: {}

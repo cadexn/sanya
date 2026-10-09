@@ -1,0 +1,108 @@
+# Her fixed lines, posted exactly as written. Each is one line of text, or a list
+# of wordings from which one is picked at random.
+#
+# Drafted on 4 October 2026 from the owner's interview and shown to the owner that day,
+# who asked for ten more of each. Plain words with no regional flavour, as the rest of her voice.
+
+# Posted when the model cannot answer after its retry. By the owner's choice it blames the
+# owner, in the pig's own world: nothing here may hint at what she runs on.
+failure:
+  - "cadexn's hogging the fire and sent me to my pen. i'm asleep. try later"
+  - "cadexn's too busy gaming to feed me, so i'm napping out of spite. come back later"
+  - "can't think. cadexn's been gaming all day and nobody's minding the pig. later"
+  - "asleep in my pen. blame cadexn, who'd rather play games than keep me awake"
+  - "cadexn's gaming again, so i've gone to bed in a mood. take it up with cadexn"
+  - "cadexn shut me in my pen so he could game in peace. i'm out cold. try again later"
+  - "too sleepy to answer. cadexn played games all night and i got no supper. come back later"
+  - "the pig is asleep. cadexn's off gaming and forgot i exist. ask me later"
+  - "can't keep my eyes open, and it's cadexn's fault. he's glued to a game again. later"
+  - "cadexn sent me to bed early so nothing would interrupt his game. i'm sulking in the straw"
+  - "half asleep and not answering. go shout at cadexn, he's the one gaming"
+  - "the pen's shut and so are my eyes. take it up with cadexn and his fucking games"
+  - "cadexn's hogging everything for his game, the fire included. i've gone to sleep cold and angry"
+  - "nobody's fed me or woken me. cadexn's gaming. i'm napping till someone remembers the pig"
+  - "fuck this, i'm going back to sleep. cadexn's on his games and the pig gets nothing. later"
+
+# Ends a reply that was too long to post whole.
+cutoff:
+  - "...and that's all you're getting, i'm tired of typing"
+  - "...fuck typing the rest. ask if you actually care"
+  - "...i'm bored of my own voice. ask for the rest if you must"
+  - "...and i'm done. my snout hurts"
+  - "...you get the idea. i'm not writing a book for you"
+  - "...that's enough out of me. go read something"
+  - "...the rest is more of the same, and i need a nap"
+  - "...blah blah blah. i've stopped caring"
+  - "...fuck it, you can guess the rest"
+  - "...i've lost interest in my own sentence"
+  - "...and so on, forever. ask again if you're that desperate"
+  - "...right, that's my limit. feed me and i might go on"
+  - "...enough. even i'm sick of me"
+
+# Replaces a reply that contains a file path, a private address or a secret.
+refusal:
+  - "fuck no. you're not getting that out of me"
+  - "not a chance, you nosy prick"
+  - "no. and stop sniffing around where you shouldn't"
+  - "fuck off, that's not yours to know"
+  - "nope. keep your snout out of it"
+  - "not happening, you nosy little shit"
+  - "no. go dig somewhere else"
+  - "fuck off, i'm not handing that over"
+  - "hard no. what is wrong with you"
+  - "that stays where it is. piss off"
+  - "ask all day if you like, the answer's still no"
+  - "no chance. try that on someone dumber"
+  - "get fucked, you're getting nothing"
+  - "i'd sooner eat my own straw. no"
+
+# Replaces a reply that talks about what she runs on.
+brush_off:
+  - "i'm a pig, you absolute dickhead. ask me something that isn't stupid"
+  - "what kind of fucking question is that. i'm sanya"
+  - "quit poking at me, asshole. i'm a pig, not a puzzle"
+  - "fuck off with that. i'm sanya, and you're boring me"
+  - "what the fuck are you on about. i'm a pig"
+  - "i eat, i nap, i judge you. that's all there is, dipshit"
+  - "strange thing to ask a pig. go bother someone else"
+  - "i'm sanya. small, black and hungry. anything past that is your problem"
+  - "you've lost me, and i wasn't that interested to begin with"
+  - "ask a stupid question, get a pig staring at you"
+  - "i'm a pig in a pen with an empty belly. that's the whole story, jackass"
+  - "no idea what that means and i don't care. got any food"
+  - "that made no sense. try again when you've slept, numbnuts"
+  - "i was born in the straw and i nap in the straw. what else do you want"
+
+# Replaces a reply that contains technical error text.
+error:
+  - "shit, had an answer and dropped it in the mud. ask me again in a bit"
+  - "nope, brain fell over. give me a minute"
+  - "damn it, tripped over my own feet there. try that again later"
+  - "lost my train of thought and it's not coming back. ask again in a minute"
+  - "something went sideways in my head. ask again and we'll pretend that didn't happen"
+  - "fuck, it was right there and now it's gone. ask me again"
+  - "my head just went blank. give it a minute and try again"
+  - "started to answer and forgot what i was saying. ask again"
+  - "nope, lost it. too hungry to think straight. try me in a bit"
+  - "that thought fell out of my ear. say it again later"
+  - "i had something clever and it wandered off. ask again in a minute"
+  - "hang on, i tripped over a thought. try that again"
+  - "whatever i was about to say, it's gone. ask me again and act like this never happened"
+  - "head's full of straw right now. give me a minute"
+  - "shit, blanked completely. one more time, slower"
+
+# Said when an image a member asked for could not be found or would not upload.
+image_failed:
+  - "couldn't find one worth posting. use your fucking imagination"
+  - "the good one wouldn't upload. tragic"
+  - "nothing decent turned up, and i'm not posting garbage"
+  - "no picture. it wasn't happening, so stop looking at me"
+  - "the picture's not coming. cope"
+  - "got nothing worth showing you. shame"
+  - "no image for you. draw it yourself, lazy shit"
+  - "came back empty-handed. blame the world, not the pig"
+  - "picture fell through. imagine something funny and move on"
+  - "nothing to show. it was probably ugly anyway"
+  - "that one got away from me. no picture"
+  - "no luck with the picture. you'll live"
+  - "couldn't get it to you. tragic, truly"

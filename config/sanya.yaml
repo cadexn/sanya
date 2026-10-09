@@ -1,0 +1,134 @@
+# Sanya's settings. docs/CONFIGURATION.md says what each one means. There are no defaults in
+# code: a missing or unknown key stops the bot from starting, and so does an empty value where
+# one is needed. `scripts\start.ps1 --check` reads this file and says what is wrong.
+#
+# Discord ids are strings. Keep the quotes, or YAML reads them as numbers.
+
+discord:
+  owner_user_id: ""                 # your Discord account id; the owner may list and forget what she remembers about anyone
+  # Servers she is switched on in. Anywhere else she neither listens nor replies.
+  # null = every server she is in.
+  active_servers: null
+  bots_as_people: []                # bot accounts treated as people: what they say can become facts, and the bot exchange rule skips them
+  status_hours: 4                   # how often the line under her name changes
+  no_reply_channels: []             # channels she listens in but never answers in
+
+intake:
+  batch_wait_seconds: 0             # how long she waits for more messages from the same member before answering
+  max_turn_restarts: 0              # how often a reply she has begun may be started over when the member writes again; null = no limit
+  bot_exchange_ceiling: null        # answers to bots in a channel since a person last spoke there; null = no ceiling (risk accepted)
+  attachments:
+    max_count: 4
+    max_mb: 32
+    open_hours: 168                 # how long she can open a file sent to her: 7 days, as long as the room log; the bot never deletes them
+    download_seconds: 60            # a file sent to her must download within this
+
+room_log:
+  keep_days: 7
+  embed_chars: 500                  # how much of an embed's title and description is recorded
+
+context:
+  minutes: 30
+  max_messages: 50
+  pictures: 2                       # the newest overheard pictures shown to her with a turn
+  line_chars: 500                   # one overheard message is cut to this in her context
+  quote_chars: 500                  # how much of a replied-to message she is shown
+  named_others: 3                   # how many other people the note "You are answering X, not ..." names
+
+conversation:
+  window_messages: 40
+  keep_days: 30
+
+model:
+  base_url: http://127.0.0.1:8080/v1   # an OpenAI-compatible chat completions server; see docs/SETUP.md
+  name: ""                          # the model id the server offers (GET /v1/models lists them)
+  max_calls_per_reply: 8            # model calls for one reply, counting the calls between tool uses
+  retries: 1
+  timeout_seconds: 300              # one call, including its wait in the server's queue
+  max_reply_tokens: 4096            # thinking and reply together
+  thinking: true
+  tools_per_call: 15                # tool requests honoured from one model answer; more are refused
+
+tools:
+  search_order: [brave, tavily, duckduckgo]   # a service with no key in .env is passed over
+  search_monthly_caps:              # kept under each service's free allowance, so neither bills
+    brave: 950
+    tavily: 950
+  search_results: 8
+  search_chars: 4000
+  page_chars: 8000                  # also the limit for a text file or a PDF
+  page_max_bytes: 2000000
+  fetch_timeout_seconds: 20
+  max_redirects: 6                  # redirects a download may follow; each one is checked like a new address
+  # How she presents herself to websites: as an ordinary browser (risk accepted).
+  browser_identity: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+  look_back_lines: 12               # lines she is shown when she looks back through the room log
+  names_in_searches: true           # a web or image search may contain a member's name
+
+files:
+  gif_frames: 4                     # stills shown to the model for one GIF
+  max_megapixels: 20                # a bigger picture is refused
+  max_gif_frames: 300               # a longer GIF is refused
+  reminder_gb: 5                    # an event is logged when data\files passes this size
+  text_endings: [".txt", ".md", ".csv", ".json"]   # the text files she reads
+  describe_days: 7                  # a picture older than this is no longer described
+  description_chars: 400            # a picture's description is cut at this
+
+security_check:
+  enabled: true
+  timeout_seconds: 120              # how long the check may take, including its wait for the model server
+  flag_when_failed: false           # whether a check that timed out, failed or gave no clear answer flags the message
+
+media:
+  spontaneous_chance: 0.25
+  cooldown_minutes: 0               # the gap between unasked images in a channel; the dice and the repeat limit still apply
+  repeat_hours: 24                  # the same image or sticker is not added unasked twice within this; no limit when someone asks
+  optional_searches: 1
+  optional_candidates: 2
+  requested_candidates: 4           # images she is shown from one search when a member asked for one
+  requested_images: 3               # images one reply may carry when a member asked for several; unasked it is always 1
+  search_results: 10                # results examined from one image search, to find enough that pass
+  download_seconds: 30              # one found image must download within this; they are all fetched at once
+  preview_px: 512                   # the size of the stills she chooses from
+  ledger_keep_days: 7
+
+emoji:
+  chance: 0.15
+  cooldown_minutes: 0               # the gap between reactions in a channel; the dice and the short-message rule still apply
+  short_chars: 100                  # a message longer than this is not "short" and gets no reaction
+
+send:
+  max_messages: 2
+  model_names: []                   # names of the model she runs on, which the outgoing-reply gate stops her saying, e.g. ["llama-3.3", "70b-instruct"]
+
+memory:
+  hindsight_url: http://127.0.0.1:8888
+  banks: {}                         # server id -> Hindsight bank, e.g. {"123456789012345678": sanya}; a server with no bank has no memory
+  recall_facts: 8
+  recall_lines: 3                   # how far back in the conversation memory's question reaches; of those lines only members' are used, never her own
+  recall_chars: 600                 # the whole question to memory is cut to this, from the front
+  recall_asker_facts: 4             # facts about the person she is answering, fetched by their name and put first; 0 = none
+  recall_own_facts: 3               # of the 8 topic facts, at most this many may be about nobody but herself
+  quiet_minutes: 2
+  batch_messages: 20
+  flush_minutes: 10                 # a smaller batch goes once its channel has been quiet this long
+  hearsay_keep_days: 90
+  # Merging facts into summaries. How many facts one round takes is set on the Hindsight bank
+  # itself, as consolidation_max_memories_per_round. She is never shown the summaries, only the facts.
+  merge_idle_minutes: 10            # merging waits until she has been left alone this long
+  merge_every_minutes: 60           # and happens at most this often
+  list_facts: 30                    # facts shown when she lists what she remembers about someone
+  back_off_minutes: 5               # after the memory service fails, background work leaves it alone this long
+  recall_seconds: 30                # time limits for the memory service: recall before a reply,
+  read_seconds: 30                  # a listing or a look-up,
+  write_seconds: 600                # and a write, which waits for the model server
+  # A record that someone asked or told her to do something is not kept as a fact, unless it has one of
+  # these in it: then it is a wish about how she is to treat them, and is kept.
+  standing_wish_words: ["not", "never", "stop", "no longer", "no more", "from now on", "go easy", "easier"]
+
+logs:
+  keep_days: 30                     # the event log
+
+paths:                              # relative to the project folder
+  data_dir: data
+  log_dir: logs

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="2198" viewBox="0 0 680 2198" role="img">
+<title>Sanya message flow</title>
+<desc>Every server message is logged and later feeds memory; a message addressed to Sanya passes through intake, the building of the prompt, the model loop and the outbox.</desc>
+<style>
+  .bg{fill:#ffffff}
+  text{font-family:'Segoe UI',-apple-system,Roboto,Helvetica,Arial,sans-serif}
+  .t{font-size:14px;font-weight:600}.s{font-size:12px}.g{font-size:12px;fill:#5f5e5a}
+  .step rect{fill:#eeedfe;stroke:#534ab7}.step .t{fill:#3c3489}.step .s{fill:#534ab7}
+  .store rect{fill:#e1f5ee;stroke:#0f6e56}.store .t{fill:#085041}.store .s{fill:#0f6e56}
+  .end rect,.stop rect{fill:#f1efe8;stroke:#5f5e5a}.end .t,.stop .t{fill:#2c2c2a}.end .s,.stop .s{fill:#5f5e5a}
+  .grp{fill:none;stroke:#888780;stroke-dasharray:4 4}
+  .ar{stroke:#5f5e5a;stroke-width:1.5;fill:none}.ah{stroke:#5f5e5a;stroke-width:1.5;fill:none}
+  @media (prefers-color-scheme: dark){
+    .bg{fill:#1f1f1d}.g{fill:#b4b2a9}
+    .step rect{fill:#3c3489;stroke:#afa9ec}.step .t{fill:#eeedfe}.step .s{fill:#cecbf6}
+    .store rect{fill:#085041;stroke:#5dcaa5}.store .t{fill:#e1f5ee}.store .s{fill:#9fe1cb}
+    .end rect,.stop rect{fill:#444441;stroke:#b4b2a9}.end .t,.stop .t{fill:#f1efe8}.end .s,.stop .s{fill:#d3d1c7}
+    .grp{stroke:#888780}.ar,.ah{stroke:#b4b2a9}
+  }
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M2 1L8 5L2 9" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect class="bg" x="0" y="0" width="680" height="2198"/>
+<rect class="grp" x="24" y="106" width="372" height="560" rx="12"/>
+<text class="g" x="40" y="122" dominant-baseline="central">Intake</text>
+<rect class="grp" x="24" y="686" width="372" height="408" rx="12"/>
+<text class="g" x="40" y="702" dominant-baseline="central">Building the prompt</text>
+<rect class="grp" x="24" y="1114" width="372" height="180" rx="12"/>
+<text class="g" x="40" y="1130" dominant-baseline="central">Model loop</text>
+<rect class="grp" x="24" y="1314" width="372" height="256" rx="12"/>
+<text class="g" x="40" y="1330" dominant-baseline="central">Outbox</text>
+<rect class="grp" x="24" y="1690" width="632" height="484" rx="12"/>
+<text class="g" x="40" y="1706" dominant-baseline="central">Background: only when nobody has addressed her for two minutes</text>
+<line class="ar" x1="210" y1="88" x2="210" y2="134" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="196" x2="210" y2="210" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="242" x2="436" y2="242" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="272" x2="210" y2="286" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="318" x2="436" y2="318" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="348" x2="210" y2="362" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="424" x2="210" y2="438" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="500" x2="210" y2="514" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="546" x2="436" y2="546" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="576" x2="210" y2="590" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="622" x2="436" y2="622" marker-start="url(#a)" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="652" x2="210" y2="714" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="746" x2="436" y2="746" marker-start="url(#a)"/>
+<line class="ar" x1="210" y1="776" x2="210" y2="790" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="822" x2="436" y2="822" marker-start="url(#a)"/>
+<line class="ar" x1="210" y1="852" x2="210" y2="866" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="898" x2="436" y2="898" marker-start="url(#a)"/>
+<line class="ar" x1="210" y1="928" x2="210" y2="942" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="974" x2="436" y2="974" marker-start="url(#a)"/>
+<line class="ar" x1="210" y1="1004" x2="210" y2="1018" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1050" x2="436" y2="1050" marker-start="url(#a)"/>
+<line class="ar" x1="210" y1="1080" x2="210" y2="1142" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1174" x2="436" y2="1174" marker-start="url(#a)" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="1204" x2="210" y2="1218" marker-start="url(#a)" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1250" x2="436" y2="1250" marker-start="url(#a)" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="1280" x2="210" y2="1342" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1374" x2="436" y2="1374" marker-start="url(#a)"/>
+<line class="ar" x1="210" y1="1404" x2="210" y2="1418" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1450" x2="436" y2="1450" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="1480" x2="210" y2="1494" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1526" x2="436" y2="1526" marker-end="url(#a)"/>
+<line class="ar" x1="210" y1="1556" x2="210" y2="1586" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1750" x2="436" y2="1750" marker-start="url(#a)" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1826" x2="436" y2="1826" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1902" x2="436" y2="1902" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="1978" x2="436" y2="1978" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="2054" x2="436" y2="2054" marker-end="url(#a)"/>
+<line class="ar" x1="384" y1="2130" x2="436" y2="2130" marker-end="url(#a)"/>
+<g class="end"><rect x="40" y="30" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="49" text-anchor="middle" dominant-baseline="central">Any message in the server</text><text class="s" x="210" y="68" text-anchor="middle" dominant-baseline="central">pinged or not; private messages never arrive</text></g>
+<g class="step"><rect x="40" y="138" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="157" text-anchor="middle" dominant-baseline="central">Admission</text><text class="s" x="210" y="176" text-anchor="middle" dominant-baseline="central">switched-on servers only; no repeats</text></g>
+<g class="step"><rect x="40" y="214" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="233" text-anchor="middle" dominant-baseline="central">Room log</text><text class="s" x="210" y="252" text-anchor="middle" dominant-baseline="central">every message recorded, with what it answers</text></g>
+<g class="store"><rect x="440" y="214" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="233" text-anchor="middle" dominant-baseline="central">Room log store</text><text class="s" x="540" y="252" text-anchor="middle" dominant-baseline="central">SQLite, kept 7 days</text></g>
+<g class="step"><rect x="40" y="290" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="309" text-anchor="middle" dominant-baseline="central">Addressed to Sanya?</text><text class="s" x="210" y="328" text-anchor="middle" dominant-baseline="central">a mention or a reply, not in a no-reply channel</text></g>
+<g class="stop"><rect x="440" y="290" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="309" text-anchor="middle" dominant-baseline="central">Not addressed</text><text class="s" x="540" y="328" text-anchor="middle" dominant-baseline="central">heard; pictures kept</text></g>
+<g class="step"><rect x="40" y="366" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="385" text-anchor="middle" dominant-baseline="central">Bot exchange rule</text><text class="s" x="210" y="404" text-anchor="middle" dominant-baseline="central">a bot gets a reply, then a plain answer</text></g>
+<g class="step"><rect x="40" y="442" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="461" text-anchor="middle" dominant-baseline="central">Batching</text><text class="s" x="210" y="480" text-anchor="middle" dominant-baseline="central">no wait, one turn at a time per channel</text></g>
+<g class="step"><rect x="40" y="518" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="537" text-anchor="middle" dominant-baseline="central">Files and quoted message</text><text class="s" x="210" y="556" text-anchor="middle" dominant-baseline="central">up to four files, type-checked and kept</text></g>
+<g class="store"><rect x="440" y="518" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="537" text-anchor="middle" dominant-baseline="central">File store</text><text class="s" x="540" y="556" text-anchor="middle" dominant-baseline="central">on disk, never deleted</text></g>
+<g class="step"><rect x="40" y="594" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="613" text-anchor="middle" dominant-baseline="central">Security check</text><text class="s" x="210" y="632" text-anchor="middle" dominant-baseline="central">flagged: no tools, nothing to memory</text></g>
+<g class="store"><rect x="440" y="594" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="613" text-anchor="middle" dominant-baseline="central">Model server</text><text class="s" x="540" y="632" text-anchor="middle" dominant-baseline="central">one-word verdict</text></g>
+<g class="step"><rect x="40" y="718" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="737" text-anchor="middle" dominant-baseline="central">Channel conversation</text><text class="s" x="210" y="756" text-anchor="middle" dominant-baseline="central">one per channel, last 40 messages</text></g>
+<g class="store"><rect x="440" y="718" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="737" text-anchor="middle" dominant-baseline="central">History store</text><text class="s" x="540" y="756" text-anchor="middle" dominant-baseline="central">SQLite, kept 30 days</text></g>
+<g class="step"><rect x="40" y="794" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="813" text-anchor="middle" dominant-baseline="central">Room context</text><text class="s" x="210" y="832" text-anchor="middle" dominant-baseline="central">last 30 minutes, 2 newest pictures</text></g>
+<g class="store"><rect x="440" y="794" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="813" text-anchor="middle" dominant-baseline="central">Room log store</text><text class="s" x="540" y="832" text-anchor="middle" dominant-baseline="central">what was said nearby</text></g>
+<g class="step"><rect x="40" y="870" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="889" text-anchor="middle" dominant-baseline="central">Image and emoji chance</text><text class="s" x="210" y="908" text-anchor="middle" dominant-baseline="central">asked, 25% chance, or off; emoji 15%</text></g>
+<g class="store"><rect x="440" y="870" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="889" text-anchor="middle" dominant-baseline="central">Ledgers</text><text class="s" x="540" y="908" text-anchor="middle" dominant-baseline="central">cooldowns, no-GIF wishes</text></g>
+<g class="step"><rect x="40" y="946" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="965" text-anchor="middle" dominant-baseline="central">Recall</text><text class="s" x="210" y="984" text-anchor="middle" dominant-baseline="central">8 facts about the speaker and the topic</text></g>
+<g class="store"><rect x="440" y="946" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="965" text-anchor="middle" dominant-baseline="central">Hindsight</text><text class="s" x="540" y="984" text-anchor="middle" dominant-baseline="central">facts only, no summaries</text></g>
+<g class="step"><rect x="40" y="1022" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1041" text-anchor="middle" dominant-baseline="central">Prompt assembly</text><text class="s" x="210" y="1060" text-anchor="middle" dominant-baseline="central">persona, rules, scene, who she is answering</text></g>
+<g class="store"><rect x="440" y="1022" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1041" text-anchor="middle" dominant-baseline="central">Persona files</text><text class="s" x="540" y="1060" text-anchor="middle" dominant-baseline="central">SOUL VOICE POLICY RULES</text></g>
+<g class="step"><rect x="40" y="1146" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1165" text-anchor="middle" dominant-baseline="central">Model call</text><text class="s" x="210" y="1184" text-anchor="middle" dominant-baseline="central">up to eight; empty or stage note: one retry</text></g>
+<g class="store"><rect x="440" y="1146" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1165" text-anchor="middle" dominant-baseline="central">Model server</text><text class="s" x="540" y="1184" text-anchor="middle" dominant-baseline="central">one call at a time</text></g>
+<g class="step"><rect x="40" y="1222" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1241" text-anchor="middle" dominant-baseline="central">Tool calls</text><text class="s" x="210" y="1260" text-anchor="middle" dominant-baseline="central">three per answer; none when flagged</text></g>
+<g class="store"><rect x="440" y="1222" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1241" text-anchor="middle" dominant-baseline="central">Tools</text><text class="s" x="540" y="1260" text-anchor="middle" dominant-baseline="central">web, files, memory, images</text></g>
+<g class="step"><rect x="40" y="1346" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1365" text-anchor="middle" dominant-baseline="central">Egress gate</text><text class="s" x="210" y="1384" text-anchor="middle" dominant-baseline="central">secrets, paths, backstage talk: fixed line</text></g>
+<g class="store"><rect x="440" y="1346" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1365" text-anchor="middle" dominant-baseline="central">Fixed lines</text><text class="s" x="540" y="1384" text-anchor="middle" dominant-baseline="central">refusal, brush-off, error</text></g>
+<g class="step"><rect x="40" y="1422" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1441" text-anchor="middle" dominant-baseline="central">Send</text><text class="s" x="210" y="1460" text-anchor="middle" dominant-baseline="central">reply, image, emoji; nobody is pinged</text></g>
+<g class="store"><rect x="440" y="1422" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1441" text-anchor="middle" dominant-baseline="central">Discord</text><text class="s" x="540" y="1460" text-anchor="middle" dominant-baseline="central">a reply without a ping</text></g>
+<g class="step"><rect x="40" y="1498" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1517" text-anchor="middle" dominant-baseline="central">Save turn</text><text class="s" x="210" y="1536" text-anchor="middle" dominant-baseline="central">message, reply, notes, facts she had; ledgers</text></g>
+<g class="store"><rect x="440" y="1498" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1517" text-anchor="middle" dominant-baseline="central">History store</text><text class="s" x="540" y="1536" text-anchor="middle" dominant-baseline="central">same SQLite file</text></g>
+<g class="end"><rect x="40" y="1590" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1609" text-anchor="middle" dominant-baseline="central">Turn finished</text><text class="s" x="210" y="1628" text-anchor="middle" dominant-baseline="central">she waits until someone addresses her again</text></g>
+<g class="step"><rect x="40" y="1722" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1741" text-anchor="middle" dominant-baseline="central">Describe overheard pictures</text><text class="s" x="210" y="1760" text-anchor="middle" dominant-baseline="central">one at a time; the file is kept</text></g>
+<g class="store"><rect x="440" y="1722" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1741" text-anchor="middle" dominant-baseline="central">Model server</text><text class="s" x="540" y="1760" text-anchor="middle" dominant-baseline="central">vision call</text></g>
+<g class="step"><rect x="40" y="1798" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1817" text-anchor="middle" dominant-baseline="central">Take back deleted messages</text><text class="s" x="210" y="1836" text-anchor="middle" dominant-baseline="central">the batch is sent again without them</text></g>
+<g class="store"><rect x="440" y="1798" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1817" text-anchor="middle" dominant-baseline="central">Hindsight</text><text class="s" x="540" y="1836" text-anchor="middle" dominant-baseline="central">documents replaced</text></g>
+<g class="step"><rect x="40" y="1874" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1893" text-anchor="middle" dominant-baseline="central">Memory batch: members&#x27; lines</text><text class="s" x="210" y="1912" text-anchor="middle" dominant-baseline="central">facts about people; claims about her dropped</text></g>
+<g class="store"><rect x="440" y="1874" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1893" text-anchor="middle" dominant-baseline="central">Hindsight</text><text class="s" x="540" y="1912" text-anchor="middle" dominant-baseline="central">document 1 of a batch</text></g>
+<g class="step"><rect x="40" y="1950" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="1969" text-anchor="middle" dominant-baseline="central">Memory batch: her own lines</text><text class="s" x="210" y="1988" text-anchor="middle" dominant-baseline="central">only facts about her alone are kept</text></g>
+<g class="store"><rect x="440" y="1950" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="1969" text-anchor="middle" dominant-baseline="central">Hindsight</text><text class="s" x="540" y="1988" text-anchor="middle" dominant-baseline="central">document 2 of a batch</text></g>
+<g class="step"><rect x="40" y="2026" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="2045" text-anchor="middle" dominant-baseline="central">Hearsay expiry and merge</text><text class="s" x="210" y="2064" text-anchor="middle" dominant-baseline="central">hearsay out after 90 days; hourly merge</text></g>
+<g class="store"><rect x="440" y="2026" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="2045" text-anchor="middle" dominant-baseline="central">Hindsight</text><text class="s" x="540" y="2064" text-anchor="middle" dominant-baseline="central">retire and merge calls</text></g>
+<g class="step"><rect x="40" y="2102" width="340" height="56" rx="8" stroke-width="1"/><text class="t" x="210" y="2121" text-anchor="middle" dominant-baseline="central">Housekeeping</text><text class="s" x="210" y="2140" text-anchor="middle" dominant-baseline="central">log 7 days, history 30, status every 4 h</text></g>
+<g class="store"><rect x="440" y="2102" width="200" height="56" rx="8" stroke-width="1"/><text class="t" x="540" y="2121" text-anchor="middle" dominant-baseline="central">SQLite and Discord</text><text class="s" x="540" y="2140" text-anchor="middle" dominant-baseline="central">expiry, presence</text></g>
+</svg>

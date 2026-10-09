@@ -1,0 +1,22 @@
+# Secrets
+.env
+
+# Runtime data (history, room log, ledgers, downloaded files)
+data/
+logs/
+.monitor-demo/
+*.db
+*.db-shm
+*.db-wal
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.python/
+*.egg-info/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

@@ -1,0 +1,13 @@
+[project]
+name = "sanya"
+version = "0.1.0"
+description = "Sanya: a rude, remembering piglet of a Discord bot, run on your own model"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "discord.py==2.7.1",
+    "PyYAML==6.0.3",
+    "Pillow>=11,<13",   # checks images and samples GIF frames
+    "pypdf>=5,<7",      # reads the text of PDFs sent to her
+]
