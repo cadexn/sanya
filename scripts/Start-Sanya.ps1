@@ -11,6 +11,7 @@ $errors = "$root\logs\console.err.log"
 
 $process = Start-Process -FilePath $python -ArgumentList '-m', 'sanya', '--quiet' -WorkingDirectory $root `
     -WindowStyle Hidden -RedirectStandardOutput "$root\logs\console.out.log" -RedirectStandardError $errors -PassThru
+$null = $process.Handle   # without this, PowerShell reports no exit code for a process it did not wait for
 
 # She either fails at once (bad config, no token, already running) or connects within a few seconds.
 Start-Sleep -Seconds 6

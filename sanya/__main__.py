@@ -69,6 +69,8 @@ def main(argv: list[str] | None = None) -> int:
     # Imported late so --check works without Discord's library.
     from dataclasses import replace
 
+    import discord
+
     from .client import SanyaClient
     from .config import _read_env_file
     from .intake.attachments import FileStore
@@ -132,6 +134,13 @@ def main(argv: list[str] | None = None) -> int:
     client = SanyaClient(config, store, replier, exchanges, files, ambient, persona.statuses)
     try:
         client.run(token, log_handler=None)
+    except discord.PrivilegedIntentsRequired:
+        print("Discord refused the connection: the Message Content intent is not switched on for this bot. "
+              "In the developer portal, open the application, Bot, and switch on Message Content Intent.", file=sys.stderr)
+        return 2
+    except discord.LoginFailure:
+        print("Discord refused the token. Check DISCORD_BOT_TOKEN in .env.", file=sys.stderr)
+        return 2
     finally:
         store.close()
         events.log_event("stopped")
