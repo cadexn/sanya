@@ -34,20 +34,6 @@ What she does:
 - **Shows her work.** Sanya Monitor is a page on your PC that shows what she hears and answers,
   what went to memory, and whether everything is up. See [docs/MONITOR.md](docs/MONITOR.md).
 
-## What you need
-
-- Windows, for the launchers and the monitor. The bot itself is plain Python and should run
-  elsewhere, but has only been run on Windows.
-- Python 3.11 or newer, or [uv](https://docs.astral.sh/uv/), which fetches one.
-- A Discord application with a bot user, and its token.
-- An OpenAI-compatible chat completions server with a model that handles tool calls, and ideally
-  thinking and vision, such as llama.cpp's server, vLLM or LM Studio.
-- [Hindsight](https://hindsight.vectorize.io/), the memory service, with one bank for her.
-- Optionally, keys for Brave Search, Tavily, Klipy and Giphy. Each is passed over when missing.
-
-[docs/SETUP.md](docs/SETUP.md) walks through all of it, from the Discord application to her first
-reply.
-
 ## Running her
 
 1. **Check what you have.** She needs all of these before anything else works:
