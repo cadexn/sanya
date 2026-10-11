@@ -5,6 +5,8 @@
 [![docs](https://github.com/cadexn/sanya/actions/workflows/docs.yml/badge.svg)](https://github.com/cadexn/sanya/actions/workflows/docs.yml)
 [![python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/downloads/)
 
+**Guides: https://cadexn.github.io/sanya/** (setup, configuration, her character, the specification, the monitor)
+
 Sanya is a Discord bot with a character: a small, black, foul-mouthed piglet who lives at an inn,
 listens to everything said in the server, remembers the people in it, and answers when she is
 spoken to. She runs on your own model server and your own memory service, on your own PC, and
@@ -73,8 +75,6 @@ reply.
    `Stop Sanya.cmd` stops her. She runs as whoever starts her, and only that account can stop her.
 
 ## Where to look
-
-The guides are also a site: https://cadexn.github.io/sanya/
 
 | File | What it holds |
 |---|---|
