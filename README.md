@@ -1,5 +1,10 @@
 # Sanya
 
+[![licence](https://img.shields.io/github/license/cadexn/sanya)](LICENSE)
+[![release](https://img.shields.io/github/v/release/cadexn/sanya?label=release)](https://github.com/cadexn/sanya/releases)
+[![docs](https://github.com/cadexn/sanya/actions/workflows/docs.yml/badge.svg)](https://cadexn.github.io/sanya/)
+![python](https://img.shields.io/badge/python-3.11%2B-blue)
+
 Sanya is a Discord bot with a character: a small, black, foul-mouthed piglet who lives at an inn,
 listens to everything said in the server, remembers the people in it, and answers when she is
 spoken to. She runs on your own model server and your own memory service, on your own PC, and
