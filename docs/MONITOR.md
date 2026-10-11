@@ -162,7 +162,7 @@ printed. It asks before doing either.
 |---|---|
 | Change anything she has recorded | No code in it writes, renames or deletes a file, and its database connections are read-only. |
 | Change her memory | The one function that reaches the memory service only fetches. |
-| Read her token or keys | It never opens `.env`. |
+| Read her token or keys | It reads one line of `.env`, `HINDSIGHT_API_KEY`, so that it can look at the memory service when that needs a key; nothing else in the file. |
 | Start or stop her by itself | Only a press of the button, confirmed, runs one of the two scripts. |
 | Be reached from another computer | It listens on `127.0.0.1` only. |
 | Be read or driven by another site open in the browser | Every request must name this PC's own address as its host, and every request for data must carry a key that is handed out with the page and changes each time the monitor starts. |

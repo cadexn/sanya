@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import asyncio
 import hmac
+import os
 import re
 import secrets
 import sqlite3
@@ -57,6 +58,22 @@ def _fail(status: int, error: str) -> web.Response:
     return web.json_response({"error": error}, status=status)
 
 
+def _memory_key(root: Path) -> str:
+    """The memory service's key, from this program's environment, else the one line of the bot's .env
+    that holds it. Nothing else in that file is read."""
+    key = os.environ.get("HINDSIGHT_API_KEY", "").strip()
+    if key:
+        return key
+    try:
+        for line in (root / ".env").read_text(encoding="utf-8-sig").splitlines():
+            name, _, value = line.partition("=")
+            if name.strip() == "HINDSIGHT_API_KEY":
+                return value.strip().strip("'\"")
+    except OSError:
+        pass
+    return ""
+
+
 class Monitor:
     def __init__(self, settings: Settings, *, log: Optional[EventLog] = None, memory: Optional[Memory] = None,
                  health: Optional[Health] = None, control: Optional[Control] = None, token: Optional[str] = None,
@@ -64,7 +81,7 @@ class Monitor:
                  process: Callable[[Settings], dict] = health_checks.process):
         self.settings = settings
         self.log = log or EventLog(settings.log_dir, settings.history_days)
-        self.memory = memory or Memory(settings.hindsight_url)
+        self.memory = memory or Memory(settings.hindsight_url, api_key=_memory_key(settings.root))
         self.health = health or Health(settings)
         self.control = control or Control(settings, state=process)
         self.token = token or secrets.token_urlsafe(24)
