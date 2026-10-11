@@ -8,9 +8,20 @@ if (-not (Test-Path $pidFile)) { Write-Output "Sanya is not running (no process 
 
 $id = [int](Get-Content $pidFile -TotalCount 1)
 $process = Get-Process -Id $id -ErrorAction SilentlyContinue
-# Only stop it if it really is this project's Python: process numbers get reused.
-# (The recorded process is the interpreter under .python; .venv's python.exe only launches it.)
-if ($null -eq $process -or -not "$($process.Path)".StartsWith("$root\", [StringComparison]::OrdinalIgnoreCase)) {
+# Only stop it if it really is this project's Python: process numbers get reused. .venv's
+# python.exe may only launch the interpreter it was made from (the "home" line of pyvenv.cfg),
+# so that folder counts as the project's own too.
+$homes = @("$root\")
+$cfg = "$root\.venv\pyvenv.cfg"
+if (Test-Path $cfg) {
+    foreach ($line in Get-Content $cfg) {
+        $m = [regex]::Match($line, '^\s*home\s*=\s*(.+?)\s*$')
+        if ($m.Success) { $homes += ($m.Groups[1].Value.TrimEnd('') + '') }
+    }
+}
+$exe = "$($process.Path)"
+$own = @($homes | Where-Object { $exe.StartsWith($_, [StringComparison]::OrdinalIgnoreCase) }).Count -gt 0
+if ($null -eq $process -or -not $own) {
     Write-Output "Sanya is not running."
     exit 0
 }

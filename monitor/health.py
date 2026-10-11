@@ -67,6 +67,21 @@ else:
         return {"path": "", "since": None, "hidden": False}
 
 
+def _own_python(root: Path, path: str) -> bool:
+    """Is this executable this project's own Python: under the project folder, or the interpreter
+    its .venv was made from (the ``home`` line of .venv/pyvenv.cfg), which a launcher-style venv runs."""
+    homes = [str(root)]
+    try:
+        for line in (root / ".venv" / "pyvenv.cfg").read_text(encoding="utf-8").splitlines():
+            key, _, value = line.partition("=")
+            if key.strip() == "home" and value.strip():
+                homes.append(value.strip())
+    except OSError:
+        pass
+    lowered = path.lower()
+    return any(lowered.startswith(home.lower().rstrip(os.sep) + os.sep) for home in homes)
+
+
 def process(settings: Settings, look: Callable[[int], Optional[dict]] = inspect) -> dict:
     """Whether the bot is running, judged as the Stop script judges it.
 
@@ -83,7 +98,7 @@ def process(settings: Settings, look: Callable[[int], Optional[dict]] = inspect)
     if seen["hidden"]:
         # It exists but this account may not look at it: started under another Windows account.
         return {"state": "other_account", "pid": pid, "since": None}
-    inside = seen["path"].lower().startswith(str(settings.root).lower() + os.sep)
+    inside = _own_python(settings.root, seen["path"])
     if seen["path"] and not inside:
         return {"state": "stopped", "pid": None, "since": None}
     return {"state": "running", "pid": pid, "since": seen["since"]}
