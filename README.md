@@ -80,6 +80,8 @@ What she remembers, fact by fact, and what is waiting to go to memory:
 
    [docs/SETUP.md](docs/SETUP.md) says how to get each one.
 
+### With the launchers
+
 2. **Double-click `Setup.cmd`.** It makes the Python environment, then asks for the bot token,
    which servers she is on, your account id, the model server, the memory service and the optional
    keys, checks each one against its service (and creates her memory bank), writes `.env` and
@@ -87,14 +89,49 @@ What she remembers, fact by fact, and what is waiting to go to memory:
    an answer. [docs/SETUP.md](docs/SETUP.md) explains each thing it asks for.
 
 3. **Double-click `Start Sanya.cmd`.** She runs in the background; the window says whether she
-   came up. Then @mention her in a channel. To see her events in a window instead, run
-   `scripts\start.ps1`.
+   came up. Then @mention her in a channel.
 
 4. **Watch and stop.** `Sanya Monitor.cmd` opens the page that shows what she hears and answers;
    `Stop Sanya.cmd` stops her. She runs as whoever starts her, and only that account can stop her.
 
-Each launcher runs a script under `scripts\` (`setup-env.ps1`, `setup.ps1`, `Start-Sanya.ps1`,
-`Stop-Sanya.ps1`), which can be run from PowerShell instead.
+### By hand, in PowerShell
+
+The launchers run these; run them yourself for the same result, or to see her events in the window.
+
+2. **Make the Python environment** (once):
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-env.ps1
+   ```
+
+3. **Fill in `.env` and `config\sanya.yaml`**, either with the wizard:
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup.ps1
+   ```
+
+   or by hand: copy `.env.example` to `.env` and put the token and keys in it, then fill the blanks
+   in `config\sanya.yaml` (your account id, the servers, the model server and model id, the memory
+   service and her bank, the model's names), as [docs/SETUP.md](docs/SETUP.md) describes, including
+   how to make her memory bank. Then check it:
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start.ps1 --check
+   ```
+
+4. **Start her**, in this window with her events shown, or in the background:
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start.ps1
+   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\Start-Sanya.ps1
+   ```
+
+5. **Watch and stop**:
+
+   ```powershell
+   .venv\Scripts\python.exe -m monitor
+   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\Stop-Sanya.ps1
+   ```
 
 ## Where to look
 
