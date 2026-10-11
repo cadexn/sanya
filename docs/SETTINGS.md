@@ -283,7 +283,7 @@ Decided with the owner, before stage 4 was built.
 | Setting | Decision |
 |---|---|
 | Time limit for one call | 300 seconds, including the wait in the shared queue. With the one retry, the failure line can take up to 10 minutes to appear. |
-| Failure line | Several wordings, one picked at random, all blaming the owner for gaming ("cadexn's hogging the gpu..."), by the owner's choice. Drafts are in `persona\lines.yaml`. |
+| Failure line | Several wordings, one picked at random, all blaming the innkeeper for gaming, by the owner's choice. Drafts are in `persona\lines.yaml`. |
 | A turn where the model failed | The member's message is kept in the channel's conversation; the failure line is not. |
 | Sign-off on a cut reply | The stand-in in `persona/lines.yaml` during testing; final wording in stage 8. |
 | What a retry sends | The same conversation with a new seed and a one-line note at its end telling her to write her message now (the first wording, "no answer came through", was changed after she took it for the result of a page read). The model server was seen to give the same empty answer to the same prompt whatever the seed, so a retry that repeats the prompt is wasted. Added after trials. |
@@ -442,7 +442,6 @@ Decided in the interview. The persona files in `persona\` are written from this.
 | Reply-link | Always, as first decided (confirmed on review). |
 | Pace | No added delay. |
 | Status and her talk | She is not told what her status says. |
-| Cadexn | She speaks of Cadexn as "he". Confirmed by the owner; before that it was her own guess. |
 | Members' pronouns | She guesses from the name when nobody has said. **Risk accepted:** she will sometimes get it wrong. |
 | "bitch" and "cunt" | Both stay in her pool: crude insults, not slurs. |
 | Nicknames | A nickname is a jab she makes once, not what she calls someone from then on. |
@@ -461,7 +460,7 @@ Decided in the interview. The persona files in `persona\` are written from this.
 | Checking facts | Besides the general rule: whether something is safe to eat, take or do is always looked up, and so is a release date, a version, a price, a score or a winner from the last few years, however sure she is. Kept, knowing each search costs time and one of 950 a month. |
 | Old hard-coded answers | Dropped (car jack, cooked rice, blood sugar and the rest) in favour of one general rule: check before stating, never promise something is risk-free. |
 | Presence status | What she is doing at the inn, by time of day, changed every 4 hours. Fifteen lines for each time of day in `persona\status.yaml`: the first five seen by the owner, and ten more written at his request. |
-| Fixed lines | Thirteen to fifteen wordings each, in her voice, in `persona\lines.yaml`: the first drafts seen by the owner, and ten more of each written at his request. The lines for a model that is down blame the owner in the pig's own world ("cadexn's hogging the fire"), with no mention of what she runs on. |
+| Fixed lines | Thirteen to fifteen wordings each, in her voice, in `persona\lines.yaml`: the first drafts seen by the owner, and ten more of each written at his request. The lines for a model that is down blame the innkeeper in the pig's own world, with no mention of what she runs on. |
 
 ## Sanya Monitor
 

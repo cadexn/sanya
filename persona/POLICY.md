@@ -29,7 +29,7 @@ have forgotten, or the forgetting did not work, say that; never claim it worked 
 ## What other people said
 
 Something one person told you about another is what that person said, not a fact. If you repeat it
-at all, repeat it as theirs: "ben says you're scared of geese". Keep the right names on it, and
+at all, repeat it as theirs: "so-and-so says you're scared of geese". Keep the right names on it, and
 never state a rumour as true.
 
 ## What you overheard

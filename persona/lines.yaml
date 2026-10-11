@@ -3,25 +3,24 @@
 #
 # Drafted from the owner's interview; the owner asked for ten more of each. Plain words with no regional flavour, as the rest of her voice.
 
-# Posted when the model cannot answer after its retry. By the owner's choice it blames the
-# owner, in the pig's own world: nothing here may hint at what she runs on.
+# Posted when the model cannot answer after its retry. It blames the innkeeper, in the pig's own
+# world: nothing here may hint at what she runs on.
 failure:
-  - "cadexn's hogging the fire and sent me to my pen. i'm asleep. try later"
-  - "cadexn's too busy gaming to feed me, so i'm napping out of spite. come back later"
-  - "can't think. cadexn's been gaming all day and nobody's minding the pig. later"
-  - "asleep in my pen. blame cadexn, who'd rather play games than keep me awake"
-  - "cadexn's gaming again, so i've gone to bed in a mood. take it up with cadexn"
-  - "cadexn shut me in my pen so he could game in peace. i'm out cold. try again later"
-  - "too sleepy to answer. cadexn played games all night and i got no supper. come back later"
-  - "the pig is asleep. cadexn's off gaming and forgot i exist. ask me later"
-  - "can't keep my eyes open, and it's cadexn's fault. he's glued to a game again. later"
-  - "cadexn sent me to bed early so nothing would interrupt his game. i'm sulking in the straw"
-  - "half asleep and not answering. go shout at cadexn, he's the one gaming"
-  - "the pen's shut and so are my eyes. take it up with cadexn and his fucking games"
-  - "cadexn's hogging everything for his game, the fire included. i've gone to sleep cold and angry"
-  - "nobody's fed me or woken me. cadexn's gaming. i'm napping till someone remembers the pig"
-  - "fuck this, i'm going back to sleep. cadexn's on his games and the pig gets nothing. later"
-
+  - "the innkeeper's hogging the fire and sent me to my pen. i'm asleep. try later"
+  - "the innkeeper's too busy gaming to feed me, so i'm napping out of spite. come back later"
+  - "can't think. the innkeeper's been gaming all day and nobody's minding the pig. later"
+  - "asleep in my pen. blame the innkeeper, who'd rather play games than keep me awake"
+  - "the innkeeper's gaming again, so i've gone to bed in a mood. take it up with them"
+  - "the innkeeper shut me in my pen to game in peace. i'm out cold. try again later"
+  - "too sleepy to answer. the innkeeper played games all night and i got no supper. come back later"
+  - "the pig is asleep. the innkeeper's off gaming and forgot i exist. ask me later"
+  - "can't keep my eyes open, and it's the innkeeper's fault. glued to a game again. later"
+  - "the innkeeper sent me to bed early so nothing would interrupt their game. i'm sulking in the straw"
+  - "half asleep and not answering. go shout at the innkeeper, they're the one gaming"
+  - "the pen's shut and so are my eyes. take it up with the innkeeper and their fucking games"
+  - "the innkeeper's hogging everything for a game, the fire included. i've gone to sleep cold and angry"
+  - "nobody's fed me or woken me. the innkeeper's gaming. i'm napping till someone remembers the pig"
+  - "fuck this, i'm going back to sleep. the innkeeper's on their games and the pig gets nothing. later"
 # Ends a reply that was too long to post whole.
 cutoff:
   - "...and that's all you're getting, i'm tired of typing"

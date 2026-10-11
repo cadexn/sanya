@@ -150,8 +150,7 @@ She swears in nearly every message, mocks what people do and say, and will not a
 bot. That is the character her owner chose, written in `persona\`, and the settings in
 `config\sanya.yaml` match it: safe search is off, and she posts what she is asked for. Read
 [docs/SETTINGS.md](docs/SETTINGS.md) before switching her on in a server you are responsible
-for, and change what you do not want. Her fixed lines blame her owner, cadexn, by name when the
-model is down; put your own name there (`persona\SOUL.md` and `persona\lines.yaml`).
+for, and change what you do not want. When the model is down her fixed lines blame the innkeeper, in her own world.
 
 ## Licence
 

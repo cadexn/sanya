@@ -45,7 +45,7 @@ runs on.
 
 | Line | Posted when |
 |---|---|
-| `failure` | The model could not answer, after its retry. Hers blame her owner by name; put your own name in, or another excuse. |
+| `failure` | The model could not answer, after its retry. Hers blame the innkeeper for gaming; write another excuse if you like. |
 | `cutoff` | A reply was too long and was cut after `send.max_messages` messages. The line ends it. |
 | `refusal` | A reply held a file path, a private address, a secret or the name of a tool or model, and was replaced whole. |
 | `brush_off` | A reply talked about her prompt, backend or machinery, or conceded she was holding something back, and was replaced whole. |
@@ -78,7 +78,6 @@ If you change what is flagged, change `RULES.md` to match, since it tells her wh
 - **Her name** comes from the bot account: she sees herself under the display name Discord gives
   her. The files name her too (`SOUL.md`, `SECURITY_CHECK.md`, the check's "a character in a
   Discord server"), so rename her there as well.
-- **Her owner** is named in `SOUL.md` and in every `failure` line. Put your own name there.
 - **Her voice** is `VOICE.md`. The swearing pool is a starting point she is told to vary; to tone
   her down, shrink it and change the opening of the Swearing section, and read the examples under
   The pitch, since she takes her length and sharpness from them.
