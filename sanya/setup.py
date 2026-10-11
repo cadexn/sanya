@@ -7,7 +7,6 @@ service. Run it again at any time: what is already set is offered to keep.
 """
 from __future__ import annotations
 
-import getpass
 import json
 import re
 import sys
@@ -60,13 +59,9 @@ def ask(prompt: str, default: str = "") -> str:
 
 
 def ask_secret(prompt: str) -> str:
-    """Typed without echo at a console. From a pipe or a file, read as plain text, since getpass would wait on the keyboard."""
-    try:
-        if not sys.stdin.isatty():
-            return input(f"{prompt}: ").strip()
-        return getpass.getpass(f"{prompt} (typed hidden): ").strip()
-    except EOFError:
-        raise Stop("no answer") from None
+    """A token or key, typed in the clear like any other answer, so that it can be seen and pasted. It is
+    never printed back, and goes only into .env."""
+    return ask(prompt)
 
 
 def yes(prompt: str, default: bool = True) -> bool:
