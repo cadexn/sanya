@@ -61,7 +61,12 @@ def main(argv: list[str] | None = None) -> int:
     if held is None:
         print("Sanya is already running. Stop that copy first.", file=sys.stderr)
         return 3
-    (data_dir / "sanya.pid").write_text(str(os.getpid()), encoding="ascii")
+    # The process number, then the interpreter really running (a venv's python.exe may only launch it),
+    # so that the monitor and the stop script can tell her from a reused process number.
+    running = os.path.realpath(getattr(sys, "_base_executable", None) or sys.executable)
+    (data_dir / "sanya.pid").write_text(f"{os.getpid()}
+{running}
+", encoding="utf-8")
 
     events.setup(_under_root(config.paths.log_dir), config.logs.keep_days, console=not args.quiet)
     events.log_event("starting")

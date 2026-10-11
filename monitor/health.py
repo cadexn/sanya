@@ -67,9 +67,13 @@ else:
         return {"path": "", "since": None, "hidden": False}
 
 
-def _own_python(root: Path, path: str) -> bool:
-    """Is this executable this project's own Python: under the project folder, or the interpreter
-    its .venv was made from (the ``home`` line of .venv/pyvenv.cfg), which a launcher-style venv runs."""
+def _own_python(root: Path, path: str, recorded: str = "") -> bool:
+    """Is this executable this project's own Python: the interpreter she recorded beside her process
+    number, one under the project folder, or the interpreter its .venv was made from (the ``home``
+    line of .venv/pyvenv.cfg), which a launcher-style venv runs. Paths are compared resolved, since
+    a Python may be reachable under two folder names."""
+    if recorded and os.path.realpath(path).lower() == os.path.realpath(recorded).lower():
+        return True
     homes = [str(root)]
     try:
         for line in (root / ".venv" / "pyvenv.cfg").read_text(encoding="utf-8").splitlines():
@@ -78,8 +82,8 @@ def _own_python(root: Path, path: str) -> bool:
                 homes.append(value.strip())
     except OSError:
         pass
-    lowered = path.lower()
-    return any(lowered.startswith(home.lower().rstrip(os.sep) + os.sep) for home in homes)
+    lowered = os.path.realpath(path).lower()
+    return any(lowered.startswith(os.path.realpath(home).lower().rstrip(os.sep) + os.sep) for home in homes)
 
 
 def process(settings: Settings, look: Callable[[int], Optional[dict]] = inspect) -> dict:
@@ -98,7 +102,7 @@ def process(settings: Settings, look: Callable[[int], Optional[dict]] = inspect)
     if seen["hidden"]:
         # It exists but this account may not look at it: started under another Windows account.
         return {"state": "other_account", "pid": pid, "since": None}
-    inside = _own_python(settings.root, seen["path"])
+    inside = _own_python(settings.root, seen["path"], recorded[1].strip() if len(recorded) > 1 else "")
     if seen["path"] and not inside:
         return {"state": "stopped", "pid": None, "since": None}
     return {"state": "running", "pid": pid, "since": seen["since"]}

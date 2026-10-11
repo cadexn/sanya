@@ -21,6 +21,9 @@ if (Test-Path $cfg) {
 }
 $exe = "$($process.Path)"
 $own = @($homes | Where-Object { $exe.StartsWith($_, [StringComparison]::OrdinalIgnoreCase) }).Count -gt 0
+# Surest of all: her process was started as "python -m sanya", whatever folder its Python lives in.
+$commandLine = (Get-CimInstance Win32_Process -Filter "ProcessId = $id" -ErrorAction SilentlyContinue).CommandLine
+if ("$commandLine" -match '(^|\s)-m\s+sanya(\s|$)') { $own = $true }
 if ($null -eq $process -or -not $own) {
     Write-Output "Sanya is not running."
     exit 0
