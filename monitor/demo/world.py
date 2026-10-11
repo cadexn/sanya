@@ -27,7 +27,7 @@ GUILD = "111111111111111111"
 OTHER_GUILD = "222222222222222222"
 TAPROOM, KITCHEN = "2001", "2002"
 HER, MIRA, TOBIN, GREGOR, JUKEBOX, OWNER = "999", "301", "302", "303", "304", "300"
-NAMES = {HER: "Sanya", MIRA: "Mira", TOBIN: "Tobin", GREGOR: "Old Gregor", JUKEBOX: "Jukebox", OWNER: "Cadexn"}
+NAMES = {HER: "Sanya", MIRA: "Mira", TOBIN: "Tobin", GREGOR: "Old Gregor", JUKEBOX: "Jukebox", OWNER: "Innkeeper"}
 BANK = "demo"
 # The facts in the made-up memory bank, by id.
 FACTS = {

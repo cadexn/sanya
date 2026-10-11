@@ -141,9 +141,9 @@ def only_about_her(fact: Fact, her_names: set[str], other_names: set[str]) -> bo
 def about_her(fact: Fact, her_names: set[str]) -> bool:
     """Is this fact, drawn from what the members said, a claim about her: what she is like, did, said or promised?
 
-    True when she is the subject ("Sanya promised Ben the last biscuit", "Ben and Sanya made
-    a bet") or the one reported on ("Ben said that Sanya's favourite food is bacon"). Not when
-    she is only the one spoken to ("Anna asked Sanya not to swear at her", "Ben told Sanya
+    True when she is the subject ("Sanya promised a member the last biscuit", "a member and Sanya
+    made a bet") or the one reported on ("a member said that Sanya's favourite food is bacon"). Not
+    when she is only the one spoken to ("a member asked Sanya not to swear at them", "a member told Sanya
     that he is moving").
     """
     body = fact.text.split("|")[0].casefold()
@@ -162,7 +162,7 @@ def about_her(fact: Fact, her_names: set[str]) -> bool:
     if re.search(r"\bthat\s+$", before):
         return True  # "... said that Sanya ..."
     if re.search(r"\band\s+$", before) and len(before.split()) <= 4:
-        return True  # "Ben and Sanya ..."
+        return True  # "<someone> and Sanya ..."
     others = [spot for spot in (first(name) for name in involved(fact.text) if name.casefold() not in her_names)
               if spot >= 0]
     return all(hers < spot for spot in others)  # she is named before anyone else: the fact is about her
