@@ -52,7 +52,18 @@ reply.
 
 1. **Check what you have.** She needs all of these before anything else works:
    - Windows (the launchers and the monitor are Windows-only; the bot itself is plain Python).
-   - Python 3.11 or newer on PATH, or [uv](https://docs.astral.sh/uv/), which fetches one.
+   - Python 3.11 or newer on PATH, or [uv](https://docs.astral.sh/uv/), which fetches one. Either
+     of these installs it, in PowerShell (open a new window afterwards so PATH is refreshed):
+
+     ```powershell
+     winget install --id Python.Python.3.12 -e          # Python, from the Microsoft package manager
+     ```
+
+     ```powershell
+     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"   # uv
+     ```
+
+     Check with `python --version` or `uv --version`.
    - A Discord application with a bot user, its token, and the Message Content intent switched on.
    - An OpenAI-compatible chat completions server with a model that handles tool calls (and ideally
      thinking and vision), running and reachable, for example llama.cpp's server, vLLM or LM Studio.
