@@ -4,12 +4,9 @@ Everything needed to run Sanya, in order. Each step says how to check it before 
 whole thing is a Discord application, a model server, a memory service, this folder, and a file
 of keys.
 
-**The quick way.** Do steps 1 to 4 (the application, the model server, the memory service, this
-folder's Python environment), then run the wizard:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup.ps1
-```
+**The quick way.** Do steps 1 to 3 (the application, the model server, the memory service), then
+double-click `Setup.cmd`, which makes the Python environment and runs the wizard (from PowerShell:
+`scripts\setup-env.ps1`, then `scripts\setup.ps1`).
 
 It asks for the token and checks it against Discord, lists the servers she is in and lets you
 pick, asks for your account id, finds the models your server offers and tries one small request

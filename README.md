@@ -80,31 +80,21 @@ What she remembers, fact by fact, and what is waiting to go to memory:
 
    [docs/SETUP.md](docs/SETUP.md) says how to get each one.
 
-2. **Make the Python environment** (once).
+2. **Double-click `Setup.cmd`.** It makes the Python environment, then asks for the bot token,
+   which servers she is on, your account id, the model server, the memory service and the optional
+   keys, checks each one against its service (and creates her memory bank), writes `.env` and
+   `config\sanya.yaml`, and ends by checking that everything loads. Run it again any time to change
+   an answer. [docs/SETUP.md](docs/SETUP.md) explains each thing it asks for.
 
-   ```powershell
-   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-env.ps1
-   ```
+3. **Double-click `Start Sanya.cmd`.** She runs in the background; the window says whether she
+   came up. Then @mention her in a channel. To see her events in a window instead, run
+   `scripts\start.ps1`.
 
-3. **Run the wizard** (once). It asks for the bot token, which servers she is on, the model server,
-   the memory service and the optional keys, checks each one, and writes `.env` and
-   `config\sanya.yaml`. The services it checks are described in [docs/SETUP.md](docs/SETUP.md).
-
-   ```powershell
-   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup.ps1
-   ```
-
-4. **Check** that the config, the persona and the storage are in order.
-
-   ```powershell
-   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start.ps1 --check
-   ```
-
-5. **Start her.** Double-click `Start Sanya.cmd`; she runs in the background. To see her events in a
-   window instead, use `scripts\start.ps1`. Then @mention her in a channel.
-
-6. **Watch and stop.** `Sanya Monitor.cmd` opens the page that shows what she hears and answers;
+4. **Watch and stop.** `Sanya Monitor.cmd` opens the page that shows what she hears and answers;
    `Stop Sanya.cmd` stops her. She runs as whoever starts her, and only that account can stop her.
+
+Each launcher runs a script under `scripts\` (`setup-env.ps1`, `setup.ps1`, `Start-Sanya.ps1`,
+`Stop-Sanya.ps1`), which can be run from PowerShell instead.
 
 ## Where to look
 
