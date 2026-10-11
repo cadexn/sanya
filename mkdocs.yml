@@ -20,6 +20,8 @@ nav:
 
 theme:
   name: material
+  logo: assets/icon.svg
+  favicon: assets/icon.svg
   palette:
     - scheme: slate
       primary: pink
