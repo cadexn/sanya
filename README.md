@@ -51,6 +51,12 @@ What she does:
 
      Check with `python --version` or `uv --version`.
    - A Discord application with a bot user, its token, and the Message Content intent switched on.
+     In the [Discord developer portal](https://discord.com/developers/applications): **New
+     Application**, name it; under **Bot** add the bot user, switch on **Message Content Intent**,
+     and copy the token (it goes in `.env`, nowhere else); under **OAuth2** make an invite link with
+     the `bot` scope and the permissions View Channels, Send Messages, Send Messages in Threads, Read
+     Message History, Attach Files, Add Reactions and Use External Emojis, open it, and add her to
+     your server.
    - An OpenAI-compatible chat completions server with a model that handles tool calls (and ideally
      thinking and vision), running and reachable, for example llama.cpp's server, vLLM or LM Studio.
    - [Hindsight](https://hindsight.vectorize.io/), the memory service, running and reachable.
