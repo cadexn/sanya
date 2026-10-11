@@ -3,10 +3,10 @@
 # Sanya
 
 [![licence](https://img.shields.io/github/license/cadexn/sanya)](https://opensource.org/license/mit)
-[![release](https://img.shields.io/github/v/release/cadexn/sanya?label=release)](https://github.com/cadexn/sanya/releases)
+[![release](https://img.shields.io/github/v/release/cadexn/sanya?label=release&style=flat)](https://github.com/cadexn/sanya/releases)
 [![docs](https://github.com/cadexn/sanya/actions/workflows/docs.yml/badge.svg)](https://github.com/cadexn/sanya/actions/workflows/docs.yml)
 [![python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/downloads/)
-[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/cadexn/sanya/badge)](https://scorecard.dev/viewer/?uri=github.com/cadexn/sanya)
+[![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/cadexn/sanya?label=openssf%20scorecard)](https://scorecard.dev/viewer/?uri=github.com/cadexn/sanya)
 
 **Guides: https://cadexn.github.io/sanya/** (setup, configuration, her character, the specification, the monitor)
 
