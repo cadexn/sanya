@@ -34,6 +34,22 @@ What she does:
 - **Shows her work.** Sanya Monitor is a page on your PC that shows what she hears and answers,
   what went to memory, and whether everything is up. See [docs/MONITOR.md](docs/MONITOR.md).
 
+## What she looks like
+
+Every message she hears, every reply with its timings, and what went to memory, as Sanya Monitor
+shows them (on made-up data):
+
+![The Live view: what she heard and answered, stage by stage](docs/monitor-live.png)
+
+One reply followed from the message to memory: the security check, recall, each model call, the
+tools she used, the facts she had, and her words:
+
+![Following one message](docs/monitor-trace.png)
+
+What she remembers, fact by fact, and what is waiting to go to memory:
+
+![The Memory view](docs/monitor-memory.png)
+
 ## Running her
 
 1. **Check what you have.** She needs all of these before anything else works:
