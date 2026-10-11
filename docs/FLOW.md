@@ -10,13 +10,10 @@ The values behind each box (how many messages, how long, what chance) are in
 
 ![Sanya message flow](flow.svg)
 
-The picture is [flow.svg](flow.svg), redrawn for the bot as it went live. It
+The picture is [flow.svg](flow.svg). It
 reads top to bottom: the left column is the path of a message, and the boxes on the right are the
 stores and services each step uses. The dashed box at the bottom is background work, which is fed
 by the room log and not by the reply.
-
-To change it, edit the step list at the top of `make_flow_svg.py` and run that script; it
-rewrites `flow.svg`.
 
 ### The same flow in Mermaid
 
