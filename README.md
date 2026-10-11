@@ -50,13 +50,24 @@ reply.
 
 ## Running her
 
-1. **Make the Python environment** (once). Needs Python 3.11 or newer, or uv.
+1. **Check what you have.** She needs all of these before anything else works:
+   - Windows (the launchers and the monitor are Windows-only; the bot itself is plain Python).
+   - Python 3.11 or newer on PATH, or [uv](https://docs.astral.sh/uv/), which fetches one.
+   - A Discord application with a bot user, its token, and the Message Content intent switched on.
+   - An OpenAI-compatible chat completions server with a model that handles tool calls (and ideally
+     thinking and vision), running and reachable, for example llama.cpp's server, vLLM or LM Studio.
+   - [Hindsight](https://hindsight.vectorize.io/), the memory service, running and reachable.
+   - Optionally, keys for Brave Search, Tavily, Klipy and Giphy.
+
+   [docs/SETUP.md](docs/SETUP.md) says how to get each one.
+
+2. **Make the Python environment** (once).
 
    ```powershell
    powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-env.ps1
    ```
 
-2. **Run the wizard** (once). It asks for the bot token, which servers she is on, the model server,
+3. **Run the wizard** (once). It asks for the bot token, which servers she is on, the model server,
    the memory service and the optional keys, checks each one, and writes `.env` and
    `config\sanya.yaml`. The services it checks are described in [docs/SETUP.md](docs/SETUP.md).
 
@@ -64,16 +75,16 @@ reply.
    powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup.ps1
    ```
 
-3. **Check** that the config, the persona and the storage are in order.
+4. **Check** that the config, the persona and the storage are in order.
 
    ```powershell
    powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start.ps1 --check
    ```
 
-4. **Start her.** Double-click `Start Sanya.cmd`; she runs in the background. To see her events in a
+5. **Start her.** Double-click `Start Sanya.cmd`; she runs in the background. To see her events in a
    window instead, use `scripts\start.ps1`. Then @mention her in a channel.
 
-5. **Watch and stop.** `Sanya Monitor.cmd` opens the page that shows what she hears and answers;
+6. **Watch and stop.** `Sanya Monitor.cmd` opens the page that shows what she hears and answers;
    `Stop Sanya.cmd` stops her. She runs as whoever starts her, and only that account can stop her.
 
 ## Where to look
