@@ -74,12 +74,17 @@ def yes(prompt: str, default: bool = True) -> bool:
     return default if not answer else answer.startswith("y")
 
 
-def choose(prompt: str, options: list[str]) -> list[int]:
-    """Numbers picked from a list, or every one of them for "all"."""
+def choose(prompt: str, options: list[str], one: bool = False) -> list[int]:
+    """Numbers picked from a list, or every one of them for "all". With ``one``, a single number, 1 by default."""
     for number, option in enumerate(options, 1):
         say(f"  {number}. {option}")
     while True:
-        answer = ask(prompt, "all").lower()
+        answer = ask(prompt, "1" if one else "all").lower()
+        if one and answer.isdigit() and 1 <= int(answer) <= len(options):
+            return [int(answer) - 1]
+        if one:
+            say(f"Give one number from 1 to {len(options)}.")
+            continue
         if answer == "all":
             return list(range(len(options)))
         picked = [int(part) - 1 for part in re.findall(r"\d+", answer)]
@@ -166,7 +171,8 @@ def servers_step(guilds: list[dict]) -> tuple[Optional[list[str]], list[dict]]:
         return None, []
     picked = choose("Switch her on in which? Numbers, or 'all'", [f"{g.get('name', '?')} ({g.get('id')})" for g in guilds])
     chosen = [guilds[index] for index in picked]
-    if len(chosen) == len(guilds) and yes("Every server she is in, now and later (null in the config)?", default=False):
+    if len(chosen) == len(guilds) and len(guilds) > 1 and yes(
+            "Also any server she joins later, without editing the config?", default=False):
         return None, chosen
     return [str(g["id"]) for g in chosen], chosen
 
@@ -195,8 +201,7 @@ def model_step(current_url: str, current_name: str) -> dict[str, Any]:
     ids = [item.get("id", "") for item in (listing.get("data", []) if isinstance(listing, dict) else []) if item.get("id")]
     if ids:
         say("The server offers:")
-        index = choose("Which model? One number", ids)
-        name = ids[index[0]] if len(index) == 1 else ids[0]
+        name = ids[choose("Which model? One number", ids, one=True)[0]]
     else:
         name = ask("The server lists no models. The model id to send", current_name)
     say("One small request, to see what the server answers with...")
@@ -241,8 +246,19 @@ def memory_step(env: dict[str, str], current_url: str, chosen: list[dict]) -> di
     if key and yes("An API key for it is already in .env. Keep it?"):
         pass
     else:
+        say("If it needs an API key, paste it here: a right-click pastes into a PowerShell window.")
         key = ask_secret("Its API key, if it needs one (empty for none)")
     headers = {"Authorization": f"Bearer {key}"} if key else {}
+    # A key the service refuses can be typed again; the earlier answers are not lost.
+    for attempt in range(3):
+        status, probe = http("GET", f"{url}/v1/default/banks", headers=headers)
+        if status not in (401, 403):
+            break
+        say("The memory service wants an API key, or refuses this one." + (" Last try." if attempt == 2 else ""))
+        if attempt == 2:
+            raise Stop("The memory service refused the key three times.")
+        key = ask_secret("Its API key")
+        headers = {"Authorization": f"Bearer {key}"} if key else {}
     banks: dict[str, str] = {}
     if not chosen:
         say("No server chosen, so no bank is set up now. Put the server id and a bank name under memory.banks later.")
