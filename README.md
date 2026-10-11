@@ -1,3 +1,5 @@
+![Sanya](docs/banner.png)
+
 # Sanya
 
 [![licence](https://img.shields.io/github/license/cadexn/sanya)](https://opensource.org/license/mit)
