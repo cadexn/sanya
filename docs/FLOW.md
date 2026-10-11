@@ -15,104 +15,10 @@ reads top to bottom: the left column is the path of a message, and the boxes on 
 stores and services each step uses. The dashed box at the bottom is background work, which is fed
 by the room log and not by the reply.
 
-### The same flow in Mermaid
+### Zoomable version
 
-For viewers that draw Mermaid, such as Gitea. Solid arrows are the path of a message being
-answered; dotted arrows are background work.
-
-```mermaid
-flowchart TD
-    subgraph INTAKE["Intake"]
-        ADM["Admission<br/>switched-on servers only, no repeats"]
-        LOG["Room log<br/>every message, with what it answers"]
-        ADDR{"Addressed to her,<br/>in a channel she may reply in?"}
-        BOTS["Bot exchange rule<br/>a reply, then a plain answer"]
-        BATCH["Batching<br/>no wait, one turn at a time per channel"]
-        ATT["Files and quoted message<br/>up to four, type-checked and kept"]
-        SEC["Security check<br/>flagged: no tools, nothing to memory"]
-    end
-
-    subgraph PROMPTING["Building the prompt"]
-        SESS["Channel conversation<br/>one per channel, last 40 messages"]
-        CTX["Room context<br/>last 30 minutes, 2 newest pictures"]
-        MEDIA["Image and emoji chance<br/>asked, 25% chance, or off"]
-        RECALL["Recall<br/>8 facts, never the merged summaries"]
-        PROMPT["Prompt assembly<br/>persona, rules, scene, who she is answering"]
-    end
-
-    subgraph LOOP["Model loop"]
-        MODEL["Model call<br/>up to eight, one retry with a note"]
-        TOOLS["Tool calls<br/>fifteen per answer, none when flagged"]
-    end
-
-    subgraph OUTBOX["Outbox"]
-        EGRESS["Egress gate<br/>secrets, paths, backstage talk: fixed line"]
-        SEND["Send<br/>reply, image, emoji; nobody is pinged"]
-        SAVE["Save turn<br/>message, reply, tool notes, facts she had"]
-    end
-
-    subgraph BG["Background, only after two quiet minutes"]
-        IMG["Describe overheard pictures<br/>the file is kept"]
-        BACK["Take back deleted messages"]
-        AMB1["Memory batch: members' lines<br/>facts about people; claims about her dropped"]
-        AMB2["Memory batch: her own lines<br/>only facts about her alone are kept"]
-        MERGE["Hearsay expiry and merge"]
-        EXPIRE["Housekeeping<br/>log 7 days, history 30, status"]
-    end
-
-    MSG(["Any message in the server"])
-    HEARD(["Heard, no reply; pictures kept"])
-    DONE(["Turn finished"])
-
-    ROOM[("Room log store<br/>SQLite, 7 days")]
-    HIST[("History store<br/>SQLite, 30 days")]
-    FILES[("File store<br/>on disk, never deleted")]
-    LEDGER[("Ledgers<br/>images, emoji, members' wishes")]
-    PERSONA[("Persona files<br/>and fixed lines")]
-    HS[("Hindsight<br/>one bank, facts only")]
-    MODELSRV[("Model server<br/>one request at a time")]
-    WEB[("Search services and public web<br/>private addresses blocked")]
-    DISCORD[("Discord")]
-
-    MSG --> ADM --> LOG --> ADDR
-    ADDR -- no --> HEARD
-    ADDR -- yes --> BOTS --> BATCH --> ATT --> SEC
-    SEC --> SESS --> CTX --> MEDIA --> RECALL --> PROMPT
-    PROMPT --> MODEL
-    MODEL <--> TOOLS
-    MODEL --> EGRESS --> SEND --> SAVE --> DONE
-
-    LOG --> ROOM
-    HEARD --> FILES
-    ATT --> FILES
-    ROOM --> CTX
-    HIST --> SESS
-    SAVE --> HIST
-    LEDGER --> MEDIA
-    SAVE --> LEDGER
-    HS --> RECALL
-    PERSONA --> PROMPT
-    PERSONA --> EGRESS
-    SEC <--> MODELSRV
-    MODEL <--> MODELSRV
-    TOOLS <--> WEB
-    TOOLS <--> HS
-    TOOLS <--> FILES
-    SEND --> DISCORD
-
-    FILES -.-> IMG
-    IMG -.-> MODELSRV
-    ROOM -.-> BACK
-    ROOM -.-> AMB1
-    ROOM -.-> AMB2
-    BACK -.-> HS
-    AMB1 -.-> HS
-    AMB2 -.-> HS
-    MERGE -.-> HS
-    EXPIRE -.-> ROOM
-    EXPIRE -.-> HIST
-    EXPIRE -.-> DISCORD
-```
+The same flow as a diagram you can zoom and pan: [open it in the Mermaid viewer](https://mermaid.live/view#pako:eNp9V1GP2zYM_itCgGEtkOu624YN16JDErt3QZNzFntdgWYPiq3EWmzJleTmgqL_fSRlO3ZS9F6so0SK_PiRVL6MUp2J0R0b7Qp9THNuHEuCjWLwZ-vt3vAqZ_PHZPIu_LgZzZXjB7EZ_esP4N8kWMLGJCultVKr11vz0xt7lC7NRXajFbPCfBbGMq2K05gpzYyoBHd2YGQR3YORtdYlK_SebAjQOrFSWMv3YszAYs6OOXdMOsaVPYLNCz-C9Rd0JDOgIzLmNMuFGZMxqRhnEJxSomA2F6zkJ3SkODGp_tyMvp7tTKMkBl-m2jHxhCp7wUxdCLLDvdKYuVygyargaJrcGXgznSSzBzTDAQipfEgQ_JFLNwYsBHO1AU2IhTlZClYJ0zo4DCtJwMxbWQgL92TsU60dBNfgQmbrCmPd6dqAX6dK3AD06QEO4fmDqNzAYBzOwGAs0tpId2J0lszsCr7fi-wOc-S0Lixmy6HzaL4UpTanzpJQ2UZdsGS1jparZP6IqZzWsshIFcCujC6vvIgR5VmTklQrJAl3LYMQoR4kY1Zw69ivL9vAh7mfJR9a-oAlJ54cGSGdX0BHqtoJiOeWKXEUIKxkCvhfWFmGwXyCJC_hAgIPYv5Pkg9pk38LuIKd335opJBLw_RuNzC0DmeTxQI9EikvCtL8g-146hBTJDbBUgoDeAN-ZcmNvHDGgwk2VgQe48DpclucyBggY7XiYyIm2LSpUFgjuSZyS9tQEhLw3YwtomgFVyyhAxRQeLoa4hEF4aLb7iLxdBNynzdMNsJBpVKBcqTMsD8kUbTAVCdAKTJiPdvkzgmoIUyydxbpBtaOWFkNF7_rfPR3Mo0w71HttvppcGl4v_YEC_fYDdieO59AK1JwFyCruMvhs-XpwTrMt-PF4Y7t5BOkpJBKXND1MaCqURmZabqALKk3EU1egftbnZ0Q_QqA73lPFibvsYHG_LMvfTLTdbe2qyBGiCB4RnShdOb8-0BMqeAgkL3RtcrG1GoZB3yBZ0cNLUMK1xbBwKn5ElUDYVMjt4JpYGYuuMm6-iAvkas7aEAY2VU7mU5m7zC7MBYITAZcEb0OddGkl9OfkVHUTOA8NMc7bC1bIPSPBHvDDgqeb3UNtSp0VYhXLIVeW7ZC6OwsM7qqLmCGC26vLsDD-qh69gmh_iV4hBfIP27EdZTLcH2P6XsAdCyMDvFUSbCPPYKqeEi-D6v5mk7r2oqDEFU7AGC2sd9Zxk-Q31xahz7-8hLq13FX228leRnfP8PxqrpRCAOLuoefq6Dz3J98CCfr4FnjY9ZO2uL0qktmG1ajEESPIZ5PcBDtpJLAtcxv-wPrKFp-fHYeywwd9mUU_7WQDnjrg9mMnjeeP8zjBFUemuCuNaAdD1XezhdhjDo443oK8HTIpD20DbOh1VlvEQb34RoVFyLbA3_8oMeKtE1Jjs_UOmJ0vVtX4TqOHieovvLNlCjujWBaz42gH17sg1OZxfbXTaotV4e2YpFaZw3qofH6Per5Purz1qka8anGidS9BM66_4RTVIshn2lOejJtXgFVvS1kyo5i6-eBkZ-hwzHePH4s2xYanwBnY8E8nkXrAA0G0qbaNHsdzdjNzRt8zNEX3mPN_8Han8AViJBWuEFsG-6c4FrcwgeUX-AbyJtJEvrC28PrwKIRxP4sTHD60gymlR-itPSzsEkcrf1ZxLYHM3uNUpo3fSkK_TxornwM_AI6Mi2wEFog2sCR-726IhkxtYm5CagnQo02lHMxdFE2cbd34l6fx-fgLw767ZZ-PWQGPL6GqSf3wZ-Bf92BB8S8wm-4QWj6DaDjlewhvhL1IOmgbsjXgkxH2M0L2IEJ5GWw8JLh_R7VF8Sm2btLGY6Tb8huvQw1vKx1E89fSW6HEmr1Q5Fv6F52JkZfek5nX9qFPRqzEcyJkssMf2nBzxTo4Fjqd2wzyrg5wC8QPMNrp-OTSkHuTA3dclRXGRR2IDmM-rIRf_0fUWIonQ).
+The picture above is also [flow.svg](flow.svg) at full size.
 
 ## The same flow as steps
 
