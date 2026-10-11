@@ -4,7 +4,7 @@ A page in the browser that shows what the bot is doing: what she hears, what she
 how, what goes to memory, and whether everything she leans on is up. It is a separate program
 from the bot. It reads what she records and changes none of it.
 
-Built on 4 October 2026 at the owner's request and settled in an interview the next day. Every
+Built at the owner's request and settled with the owner in an interview. Every
 choice in it is the owner's; they are recorded in [SETTINGS.md](SETTINGS.md), under "Sanya
 Monitor".
 
@@ -55,7 +55,7 @@ The side panel follows one message from arriving to memory:
 3. **Said to her**: whether it mentioned her or replied to her; if it did and she did not
    answer, why not.
 4. **Reply turn**: every step with how long it took, drawn on one time line: the security check
-   and its verdict, the recall and how many facts it brought (and, from 9 October 2026, how many
+   and its verdict, the recall and how many facts it brought (and,, how many
    of them were fetched by the name of the person she was answering, and how many earlier lines of
    the members' memory was asked with), each model call (tokens read and
    written, time spent waiting for the model server, reading and writing), each tool and search
@@ -64,7 +64,7 @@ The side panel follows one message from arriving to memory:
    sending. A sticker's step says whether it went with her words or as her whole answer, or that
    Discord refused it; which sticker it was shows in her reply below, where the room log notes
    its name. A
-   **Choices** row, for replies made from her first start after 9 October 2026, says what the turn
+   **Choices** row, for replies made from her first start, says what the turn
    was allowed and what came of it: the image mode (none, allowed unasked, asked for, a meme asked
    for) with the dice thrown, whether the channel was cooling down and whether the member wants no
    unasked images; whether a reaction was allowed, with its dice; how many tools were offered on
@@ -181,8 +181,7 @@ printed. It asks before doing either.
 | `servers` | empty | A name to show for a server id, in place of the one she recorded. |
 | `channels` | empty | A name to show for a channel id, in place of the one she recorded. |
 
-Names: she records the names of channels and of the server herself, from her first start after
-5 October 2026. For a channel she has not named yet, the monitor uses the name she gave the
+Names: she records the names of channels and of the server herself. For a channel she has not named yet, the monitor uses the name she gave the
 memory service with a batch of that channel's chat, and failing that shows the last four digits
 of its id.
 
@@ -191,25 +190,23 @@ of its id.
 The bot does not record these, so the monitor has nothing to show for them:
 
 - **The exact prompt** of a reply. The event log has sizes and timings, never text. Keeping the
-  prompts was offered to the owner on 5 October 2026 and not chosen.
+  prompts was offered to the owner and not chosen.
 - **What a tool was asked and what it returned.** The log has the tool's name, whether it
-  worked and how long it took. When she looks back through the chat (from her first start after
-  9 October 2026) the step says how many lines she found; the words she looked for are not
+  worked and how long it took. When she looks back through the chat the step says how many lines she found; the words she looked for are not
   kept, since they will often be a member's name. Her own one-line note on each tool is in the conversation, and
   the facts a memory tool handed her are kept (see below). The one thing kept of what a tool was
-  asked is the words of a search, from her first start after 9 October 2026: the page shows them
-  on the reply's card ("searched: ...") and on the search's step, with the service that
+  asked is the words of a search, from her first start: the page shows them
+  on the reply's card ("searched:...") and on the search's step, with the service that
   answered, how many images were found and passed, and how many were the search service's own
-  copy because the site refused the download. A search before that day shows without its words.
+  copy because the site refused the download. A search made before that was recorded shows without its words.
 - **Why she chose as she did.** The Choices row shows what a turn was allowed, what was offered
   on each call, what she asked for and what came of it. Her reasoning is not kept and is not
   logged, so the page cannot say why she left an allowance alone or picked one image over another.
 - **A clean stop.** Stopping her ends the process at once, so nothing is logged. The page shows
   her as stopped from the process itself.
 
-Two things she records for the monitor since 5 October 2026, from her first start after that
-day. Until she has been restarted, and for replies made before it, the page says so and shows
-what there is:
+Two things she records for the monitor since they were added. For replies made before that, the
+page says so and shows what there is:
 
 - **The names of channels and of the server.**
 - **The facts she had from memory for each reply**, as a copy of their text, kept 30 days. A copy

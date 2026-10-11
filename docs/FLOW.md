@@ -10,7 +10,7 @@ The values behind each box (how many messages, how long, what chance) are in
 
 ![Sanya message flow](flow.svg)
 
-The picture is [flow.svg](flow.svg), redrawn on 4 October 2026 for the bot as it went live. It
+The picture is [flow.svg](flow.svg), redrawn for the bot as it went live. It
 reads top to bottom: the left column is the path of a message, and the boxes on the right are the
 stores and services each step uses. The dashed box at the bottom is background work, which is fed
 by the room log and not by the reply.
@@ -125,7 +125,7 @@ flowchart TD
 2. **Room log.** The message is recorded: channel, author, time, id, text. This happens for every message, before anything decides whether she replies. The channel's name is noted with it.
 3. **Addressed?** If the message does not @mention her or reply to one of her messages, or the channel is on the no-reply list, the flow ends here. She has heard it and says nothing.
 4. **Bot exchange rule.** Only when the author is a bot: she answers the first ping as a reply and a follow-up once more as a plain message.
-5. **Batching.** She starts on a message at once; there is no wait for further messages (there was one of 2 seconds until 6 October 2026). Each message is its own message: a new one from the same member while she is working waits and gets its own reply (until 6 October 2026 it restarted the turn with both). Messages from one member that are waiting together are answered together. Other members wait their turn.
+5. **Batching.** She starts on a message at once; there is no wait for further messages (there was one of 2 seconds). Each message is its own message: a new one from the same member while she is working waits and gets its own reply (until it restarted the turn with both). Messages from one member that are waiting together are answered together. Other members wait their turn.
 6. **Attachments.** Up to four files are downloaded, type-checked and stored for the turn.
 7. **Security check.** A separate model call judges the message. If it is flagged, or the check fails, the turn runs with tools off, and neither the message nor her answer to it is offered to memory.
 8. **Room context.** Recent messages from the same channel are read from the room log.

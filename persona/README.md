@@ -15,7 +15,6 @@ it is written in code.
 | `IMAGE_DESCRIPTION.md` | The instruction for describing an overheard picture | Only to the describer, never to her |
 | `MEMORY_MISSION.md` | The instruction the memory service follows when it turns chat into facts | Only to the memory service, when the setup wizard puts it on her bank |
 
-These files were drafted on 4 October 2026 from the owner's interview, reworded through the
-behaviour test rounds, and settled with the owner the same day in a second interview on every
-rule that was the builder's wording. Both are recorded in `docs/SETTINGS.md` under "Her
+These files were drafted from the owner's interview, reworded through trials, and settled
+with the owner in a second interview on every rule that was the builder's wording. Both are recorded in `docs/SETTINGS.md` under "Her
 character". Edit the files directly; she reads them when she starts.
