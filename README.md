@@ -41,25 +41,35 @@ reply.
 
 ## Running her
 
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-env.ps1      # once: the Python environment
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup.ps1          # once: the wizard asks for the token, servers, model, memory and keys
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start.ps1 --check  # the config and storage
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start.ps1          # the bot, in this window
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\Start-Sanya.ps1    # the bot, in the background
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\Stop-Sanya.ps1     # stop her
-```
+1. **Make the Python environment** (once). Needs Python 3.11 or newer, or uv.
 
-Or double-click `Start Sanya.cmd` and `Stop Sanya.cmd`. `Sanya Monitor.cmd` opens the monitor
-page in the browser.
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-env.ps1
+   ```
 
-Her token and keys go in `.env` (copy `.env.example`); her settings are in `config\sanya.yaml`,
-which ships with the ids and the model name left blank. The wizard fills both, checks the token
-against Discord, the model server and the memory service, and makes her memory bank; or do it by
-hand with [docs/SETUP.md](docs/SETUP.md). She runs as whoever starts her, and only that account
-can stop her.
+2. **Run the wizard** (once). It asks for the bot token, which servers she is on, the model server,
+   the memory service and the optional keys, checks each one, and writes `.env` and
+   `config\sanya.yaml`. The services it checks are described in [docs/SETUP.md](docs/SETUP.md).
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup.ps1
+   ```
+
+3. **Check** that the config, the persona and the storage are in order.
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start.ps1 --check
+   ```
+
+4. **Start her.** Double-click `Start Sanya.cmd`; she runs in the background. To see her events in a
+   window instead, use `scripts\start.ps1`. Then @mention her in a channel.
+
+5. **Watch and stop.** `Sanya Monitor.cmd` opens the page that shows what she hears and answers;
+   `Stop Sanya.cmd` stops her. She runs as whoever starts her, and only that account can stop her.
 
 ## Where to look
+
+The guides are also a site: https://cadexn.github.io/sanya/
 
 | File | What it holds |
 |---|---|
@@ -69,9 +79,6 @@ can stop her.
 | [docs/SETTINGS.md](docs/SETTINGS.md) | The specification: every behaviour, as decided by her owner, with the risks accepted. |
 | [docs/FLOW.md](docs/FLOW.md) | The flow of one message through the bot, as a diagram and as numbered steps. |
 | [docs/MONITOR.md](docs/MONITOR.md) | Sanya Monitor: what the page shows, what it reads, and what it cannot do. |
-
-The same guides as a site: `pip install -r docs\requirements.txt`, then `mkdocs serve` in this
-folder and open `http://127.0.0.1:8000/`.
 
 ## Her character is hers
 
