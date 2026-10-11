@@ -26,7 +26,7 @@ def guild_ids(data_dir: Path) -> list[str]:
 def database(data_dir: Path, guild_id: str) -> Path:
     if not guild_id.isdigit():
         raise ValueError("a server id is a string of digits")
-    return Path(data_dir) / "guilds" / f"{guild_id}.db"
+    return Path(data_dir) / "guilds" / f"{int(guild_id)}.db"
 
 
 def _marks(values: list) -> str:

@@ -105,7 +105,8 @@ def _unwrap(href: str) -> str:
     if href.startswith("//"):
         href = "https:" + href
     parts = urlsplit(href)
-    if parts.netloc.endswith("duckduckgo.com") and parts.path.startswith("/l/"):
+    host = (parts.hostname or "").lower()
+    if (host == "duckduckgo.com" or host.endswith(".duckduckgo.com")) and parts.path.startswith("/l/"):
         target = parse_qs(parts.query).get("uddg", [""])[0]
         if target:
             return unquote(target)

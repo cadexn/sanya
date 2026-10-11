@@ -30,6 +30,7 @@ from .settings import Settings
 WEB = Path(__file__).resolve().parent / "web"
 STATIC = {"app.css": "text/css", "icon.svg": "image/svg+xml",
           **{name + ".js": "text/javascript" for name in ("app", "core", "drawer", "live", "talk", "memory", "health")}}
+STATIC_FILES = {name: WEB / name for name in STATIC}  # the only files the static route can serve
 KEY_HEADER = "X-Monitor-Key"
 PICTURES = frozenset({"image/png", "image/jpeg", "image/gif", "image/webp"})
 PICTURE_BYTES = 30 * 1024 * 1024
@@ -155,7 +156,7 @@ class Monitor:
         name = request.match_info["name"]
         if name not in STATIC:
             raise web.HTTPNotFound()
-        return web.Response(body=(WEB / name).read_bytes(), content_type=STATIC[name], charset="utf-8")
+        return web.Response(body=STATIC_FILES[name].read_bytes(), content_type=STATIC[name], charset="utf-8")
 
     # --- shared ----------------------------------------------------------------
 
