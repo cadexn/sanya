@@ -8,6 +8,6 @@ requires-python = ">=3.11"
 dependencies = [
     "discord.py==2.7.1",
     "PyYAML==6.0.3",
-    "Pillow>=11,<13",   # checks images and samples GIF frames
+    "Pillow>=11,<14",   # checks images and samples GIF frames
     "pypdf>=5,<7",      # reads the text of PDFs sent to her
 ]
